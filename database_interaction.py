@@ -1,5 +1,6 @@
 import psycopg2
 from student import Student
+from web import errors
 
 
 class DataBase:
@@ -19,9 +20,7 @@ class DataBase:
         """Creating connection, table and cursor"""
         self.conn.autocommit = True
         self.cur.execute(f"GRANT ALL PRIVILEGES ON DATABASE {self.dbname} to {self.username};")
-        #cursor.execute(f"CREATE DATABASE {self.dbname}")
-        # cursor.execute(f"DROP TABLE {self.table_name}")
-        # cursor.execute(f"CREATE SEQUENCE counter IF NOT EXISTS START 1;")
+        self.cur.execute(f"CREATE SEQUENCE IF NOT EXISTS counter START 1;")
         self.cur.execute(f"CREATE TABLE IF NOT EXISTS {self.table_name}"
                          f" (id INTEGER, full_name TEXT, rating FLOAT, "
                          f"age INTEGER, photo TEXT, specialty TEXT, "
@@ -37,7 +36,7 @@ class DataBase:
         if not exists:
             self.cur.execute(f"INSERT INTO {self.table_name} VALUES (nextval('counter'), {student})")
         else:
-            raise KeyError(f"Student {student} already exists")
+            raise errors.StudentExists(student)
 
     def get_student_by_id(self, id: int) -> Student:
         """Returns student by id"""
@@ -46,7 +45,7 @@ class DataBase:
         if result:
             return Student(*result[1:])
         else:
-            raise KeyError("Student with this ID does not exist")
+            raise errors.StudentNotFound("id")
 
     def get_student_by_full_name(self, full_name: str) -> list:
         """Returns list of students with entered name"""
@@ -55,7 +54,7 @@ class DataBase:
         if result:
             return [Student(*tuple[1:]).properties_list() for tuple in result]
         else:
-            raise KeyError("Student with this name does not exist")
+            raise errors.StudentNotFound("name")
 
     def delete_student_by_id(self, id: int):
         """Deletes student by id"""
