@@ -24,7 +24,7 @@ class DataBase:
         self.cur.execute(f"CREATE TABLE IF NOT EXISTS {self.table_name}"
                          f" (id INTEGER, full_name TEXT, rating FLOAT, "
                          f"age INTEGER, photo TEXT, specialty TEXT, "
-                         f"student_group TEXT, sex CHAR(1), colour CHAR(6))")
+                         f"student_group TEXT, sex CHAR(1), colour CHAR(7))")
         self.conn.commit()
 
     def add_student(self, student: Student):
@@ -59,3 +59,12 @@ class DataBase:
     def delete_student_by_id(self, id: int):
         """Deletes student by id"""
         self.cur.execute(f"DELETE FROM {self.table_name} WHERE id={id};")
+
+    def get_all_students(self):
+        """Gets all students from table"""
+        self.cur.execute(f"SELECT * FROM {self.table_name}")
+        result = self.cur.fetchall()
+        if result:
+            return [Student(*tuple[1:]).properties_list() for tuple in result]
+        else:
+            return None

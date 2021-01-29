@@ -25,8 +25,7 @@ def default_filter(src, dst):
     return dst
 
 
-def unpack_archive(
-        filename, extract_dir, progress_filter=default_filter,
+def unpack_archive(filename, extract_dir, progress_filter=default_filter,
         drivers=None):
     """Unpack `filename` to `extract_dir`, or raise ``UnrecognizedFormat``
 
@@ -134,10 +133,10 @@ def unpack_tarfile(filename, extract_dir, progress_filter=default_filter):
     """
     try:
         tarobj = tarfile.open(filename)
-    except tarfile.TarError as e:
+    except tarfile.TarError:
         raise UnrecognizedFormat(
             "%s is not a compressed or uncompressed tar file" % (filename,)
-        ) from e
+        )
     with contextlib.closing(tarobj):
         # don't do any chowning!
         tarobj.chown = lambda *args: None
@@ -149,8 +148,7 @@ def unpack_tarfile(filename, extract_dir, progress_filter=default_filter):
 
                 # resolve any links and to extract the link targets as normal
                 # files
-                while member is not None and (
-                        member.islnk() or member.issym()):
+                while member is not None and (member.islnk() or member.issym()):
                     linkpath = member.linkname
                     if member.issym():
                         base = posixpath.dirname(member.name)

@@ -1,5 +1,5 @@
 APP_HOST = "localhost"
-APP_PORT = 4721
+APP_PORT = 8080
 
 APP_DEBUG = False
 

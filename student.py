@@ -11,7 +11,7 @@ class Student:
         self.photo = photo_link
         self.speciality = speciality
         self.group = group
-        self.sex = self.set_sex(sex)
+        self.sex = sex
         self.favourite_colour = fav_colour
 
     def __repr__(self):
@@ -22,14 +22,6 @@ class Student:
         return [self.full_name, self.rating, self.age,
                 self.photo, self.speciality, self.group,
                 self.sex, self.favourite_colour]
-
-    @staticmethod
-    def set_sex(sex: str):
-        """Suppose, there is only two genders
-        checks if the sex exist"""
-        if sex.lower() in "fmжм":
-            return sex
-        raise errors.InvalidSexException(f"Entered gender '{sex}' does not exist\nPlease enter either F(Ж) or M(М)")
 
     @staticmethod
     def set_full_name(name: str):
