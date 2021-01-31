@@ -16,11 +16,6 @@ db = DataBase(config.DB_NAME, config.USER_NAME, config.PASSWORD,
               config.DB_HOST, config.DB_PORT, config.DB_TABLE_NAME)
 
 
-@app.route('/success/<name>')
-def success(name):
-    return 'welcome %s' % name
-
-
 @app.route(f'/{root}/api/v1.0/students_list/<int:id>', methods=['GET', 'HEAD', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'])
 def get_student_by_id(id: int):
     try:
@@ -107,22 +102,3 @@ def add_student():
 
     except errors.StudentExists as e:
         return make_response(jsonify({"error": e.message}), e.code)
-
-
-
-
-# def add_student():
-#     try:
-#         prop_check = ["full_name", "rating", "age", "photo_link", "speciality", "group", "sex", "fav_colour"]
-#         blob = request.form["student"]
-#         for prop in prop_check:
-#             if prop not in blob:
-#                 abort(400)
-#
-#         s = {prop: blob[prop] for prop in prop_check}
-#         db.add_student(Student(**s))
-#         return jsonify({200: "Successfully added"}), 200
-#     except errors.StudentExists as e:
-#         return make_response(jsonify({"error": e.message}), e.code)
-
-
