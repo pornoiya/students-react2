@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './NewStudentForm.css'
-import {Form, Radio, Input, Button, InputNumber, Select} from 'antd'
+import {Form, Input, Button, InputNumber, Select} from 'antd'
 import PropTypes from 'prop-types'
 
 const BASE_URL = "http://localhost:8080/students/api/v1.0/students_list/"
-// const headers = {
-//     'Access-Control-Allow-Origin': '*',
-//     'Access-Control-Allow-Methods': 'POST, PUT, GET',
-//     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept' }
-//
+const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, PUT, GET',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept' }
+
 
 export default function NewStudentForm () {
     const [ form ] = Form.useForm();
@@ -84,11 +84,29 @@ export default function NewStudentForm () {
                             }
                         ]}
                     >
-                        <Input placeholder="100" />
+                        <div className={'colors'}>
+                            <input type={'radio'} name={'color'} value={'red'} id={'red_color'}/>
+                            <label htmlFor={'red_color'} className={'color red'}/>
+
+                            <input type={'radio'} name={'color'} value={'yellow'} id={'yellow_color'}/>
+                            <label htmlFor={'yellow_color'} className={'color yellow'}/>
+
+                            <input type={'radio'} name={'color'} value={'green'} id={'green_color'}/>
+                            <label htmlFor={'green_color'} className={'color green'}/>
+
+                            <input type={'radio'} name={'color'} value={'blue'} id={'blue_color'}/>
+                            <label htmlFor={'blue_color'} className={'color blue'}/>
+
+                            <input type={'radio'} name={'color'} value={'black'} id={'black_color'}/>
+                            <label htmlFor={'black_color'} className={'color black'}/>
+
+                            <input type={'radio'} name={'color'} value={'lgbt'} id={'lgbt_color'}/>
+                            <label htmlFor={'lgbt_color'} className={'color lgbt'}/>
+                        </div>
                     </Form.Item>
 
                     <Form.Item
-                        label="Spec"
+                        label="Специальность"
                         name="speciality"
                         rules={[
                             {
@@ -97,9 +115,7 @@ export default function NewStudentForm () {
                             }
                         ]}
                     >
-                        <select
-                            placeholder="Select a option and change input text above"
-                        >
+                        <select>
                             <option value="" hidden='true' selected>Выбрать</option>
                             <option value="Математика">Математика</option>
                             <option value="ФИИТ">ФИИТ</option>
@@ -110,7 +126,7 @@ export default function NewStudentForm () {
                     </Form.Item>
 
                     <Form.Item
-                        label="grop"
+                        label="Группа"
                         name="group"
                         rules={[
                             {
@@ -119,11 +135,11 @@ export default function NewStudentForm () {
                             }
                         ]}
                     >
-                        <Input placeholder="gr" />
+                        <Input placeholder="ПИ-101" />
                     </Form.Item>
 
                     <Form.Item
-                        label="sex"
+                        label="Пол"
                         name="sex"
                         rules={[
                             {
@@ -132,11 +148,15 @@ export default function NewStudentForm () {
                             }
                         ]}
                     >
-                        <Input placeholder="sex" />
+                        <select>
+                            <option value="" hidden='true' selected>Выбрать</option>
+                            <option value="m">Мужской</option>
+                            <option value="f">Женский</option>
+                        </select>
                     </Form.Item>
 
                     <Form.Item
-                        label="photo_link"
+                        label="Аватар"
                         name="photo_link"
                         rules={[
                             {

@@ -1,4 +1,4 @@
-input[type='text'], input[type='email'], input[type='number'], input, select, option {
+input[type='text'], input[type='email'], input[type='number'], input, select {
     box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
     border-radius: 6px;
     border: none;
@@ -9,6 +9,7 @@ input[type='text'], input[type='email'], input[type='number'], input, select, op
 
 select {
     padding-left: 10px;
+    width: 380px;
 }
 
 .photo-picker {
@@ -46,15 +47,66 @@ select {
     margin: 0;
 }
 
-.fields-container input, .fields-container select {
+.fields-container input, .fields-container select, .fields-container .colors {
     margin: 10px 0;
 }
 
-input:hover, input:focus {
+input:hover, input:focus, select:hover, select:focus {
     box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.1);
 }
 
 
 .ant-input-number-handler-wrap {
     display: none;
+}
+
+.colors {
+    background: #FFFFFF;
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+    height: 48px;
+    width: 380px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.color {
+    width: 30px;
+    height: 30px;
+    opacity: 0.7;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.colors input[type=radio]:checked + label {
+    border: #49C2E8 2px solid;
+}
+
+.colors input[type=radio] {
+    display: none;
+}
+
+.red {
+    background: red;
+}
+
+.yellow {
+    background: yellow;
+}
+
+.green {
+    background: green;
+}
+
+.blue {
+    background: blue;
+}
+
+.black {
+    background: black;
+}
+
+.lgbt {
+    background: linear-gradient(180deg, #FE0000 16.66%, #FD8C00 16.66%, #FFE500 33.32%, #119F0B 49.98%, #0644B3 83.3%, #C22EDC 83.3%);
 }

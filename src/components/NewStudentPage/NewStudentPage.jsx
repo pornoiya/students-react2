@@ -6,7 +6,7 @@ import Arrow from "../Templates/ArrowTemplate/Arrow";
 
 const BASE_URL = "http://localhost:3000/"
 
-function NewStudentPage(props) {
+function NewStudentPage() {
     const history = useHistory();
 
     return <main>
