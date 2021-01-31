@@ -77,13 +77,13 @@ class StudentsList extends React.Component {
                         <li key={st.id}
                         className={'student-field'}
                         >
-                            <span className={'student-field__photo'}></span>
+                            <span className={'student-field__photo'}><img src={st.photo_link} alt={'User picture'}/></span>
                             <span className={'fields_names__name'}>{st.full_name}</span>
                             <span className={'fields_names__speciality'}>{st.speciality}</span>
                             <span className={'fields_names__group'}>{st.group}</span>
                             <span className={'fields_names__age'}>{st.age}</span>
                             <span className={'fields_names__rating'}>{st.rating}</span>
-                            <div className={`color ${st.fav_colour}`}></div>
+                            <div className={`color ${st.fav_colour}`}/>
 
                             <button className={'delete-button'}
                                     onClick={() => { this.deleteRequest(st.id) }}

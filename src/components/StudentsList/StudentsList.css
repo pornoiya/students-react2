@@ -48,6 +48,13 @@
     background-color: darkgray;
 }
 
+.student-field__photo img {
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .delete-button {
     border: none;
     width: 40px;

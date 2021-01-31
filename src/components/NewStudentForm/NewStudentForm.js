@@ -6,17 +6,30 @@ import PropTypes from 'prop-types'
 const BASE_URL = "http://localhost:8080/students/api/v1.0/students_list/"
 const headers = {
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, PUT, GET',
-    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept' }
-
+    'Access-Control-Allow-Methods': 'POST, PUT, GET, HEAD',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    "Content-Type": "application/json",
+    "Accept":"application/json"
+}
 
 export default function NewStudentForm () {
     const [ form ] = Form.useForm();
 
+    // const v = {
+    //     full_name: 'AA aa aa',
+    //     sex: 'f',
+    //     photo_link: 'hjm,',
+    //     rating: 100,
+    //     age: 20,
+    //     speciality: 'dfghj',
+    //     group: 'fghjk',
+    //     fav_colour: 'fghj'
+    // };
+
     const onFinish = values => {
         fetch(BASE_URL, {
             method: "POST",
-            headers: {'Content-Type': 'application/json'},
+            headers: headers,
             body: JSON.stringify(values)
         } )
             .then(res => res.json())
@@ -38,12 +51,12 @@ export default function NewStudentForm () {
                     <Form.Item
                         label="ФИО"
                         name="full_name"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Это поле обязательно',
-                            }
-                        ]}
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'Это поле обязательно',
+                        //     }
+                        // ]}
                     >
                         <Input placeholder="Иванов Иван Иванович" />
                     </Form.Item>
@@ -51,12 +64,12 @@ export default function NewStudentForm () {
                     <Form.Item
                         label="Возраст"
                         name="age"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'И это поле обязательно',
-                            }
-                        ]}
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'И это поле обязательно',
+                        //     }
+                        // ]}
                     >
                         <InputNumber placeholder="18" min={18} max={100}/>
                     </Form.Item>
@@ -64,12 +77,12 @@ export default function NewStudentForm () {
                     <Form.Item
                         label="Рейтинг"
                         name="rating"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Это поле обязательно',
-                            }
-                        ]}
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'Это поле обязательно',
+                        //     }
+                        // ]}
                     >
                         <InputNumber placeholder="100" min={1} max={100}/>
                     </Form.Item>
@@ -77,12 +90,12 @@ export default function NewStudentForm () {
                     <Form.Item
                         label="Любимый цвет"
                         name="fav_colour"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Это поле обязательно',
-                            }
-                        ]}
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'Это поле обязательно',
+                        //     }
+                        // ]}
                     >
                         <div className={'colors'}>
                             <input type={'radio'} name={'color'} value={'red'} id={'red_color'}/>
@@ -108,12 +121,12 @@ export default function NewStudentForm () {
                     <Form.Item
                         label="Специальность"
                         name="speciality"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Это поле обязательно',
-                            }
-                        ]}
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'Это поле обязательно',
+                        //     }
+                        // ]}
                     >
                         <select>
                             <option value="" hidden='true' selected>Выбрать</option>
@@ -128,12 +141,12 @@ export default function NewStudentForm () {
                     <Form.Item
                         label="Группа"
                         name="group"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Это поле обязательно',
-                            }
-                        ]}
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'Это поле обязательно',
+                        //     }
+                        // ]}
                     >
                         <Input placeholder="ПИ-101" />
                     </Form.Item>
@@ -141,12 +154,12 @@ export default function NewStudentForm () {
                     <Form.Item
                         label="Пол"
                         name="sex"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Это поле обязательно',
-                            }
-                        ]}
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'Это поле обязательно',
+                        //     }
+                        // ]}
                     >
                         <select>
                             <option value="" hidden='true' selected>Выбрать</option>
@@ -158,12 +171,12 @@ export default function NewStudentForm () {
                     <Form.Item
                         label="Аватар"
                         name="photo_link"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Это поле обязательно',
-                            }
-                        ]}
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'Это поле обязательно',
+                        //     }
+                        // ]}
                     >
                         <Input placeholder="photo_link" />
                     </Form.Item>
