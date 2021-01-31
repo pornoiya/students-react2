@@ -43,7 +43,7 @@ class DataBase:
         self.cur.execute(f"SELECT * FROM {self.table_name} WHERE id={id}")
         result = self.cur.fetchone()
         if result:
-            return Student(*result[1:])
+            return Student(*result)
         else:
             raise errors.StudentNotFound("id")
 
@@ -52,7 +52,8 @@ class DataBase:
         self.cur.execute(f"SELECT * FROM {self.table_name} WHERE full_name='{full_name}'")
         result = self.cur.fetchall()
         if result:
-            return [Student(*tuple[1:]).properties_list() for tuple in result]
+            return [Student(*tuple).properties_list() for tuple in result]
+            # return [Student(*tuple[1:]).properties_list() for tuple in result]
         else:
             raise errors.StudentNotFound("name")
 
@@ -65,6 +66,6 @@ class DataBase:
         self.cur.execute(f"SELECT * FROM {self.table_name}")
         result = self.cur.fetchall()
         if result:
-            return [Student(*tuple[1:]).properties_list() for tuple in result]
+            return [Student(*tuple) for tuple in result]
         else:
             return None

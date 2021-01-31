@@ -2,7 +2,7 @@ from web import errors
 
 
 class Student:
-    def __init__(self, full_name: str, rating: float,
+    def __init__(self,  id: int, full_name: str, rating: float,
                  age: int, photo_link: str, speciality: str,
                  group: str, sex: str, fav_colour: str):
         self.full_name = self.set_full_name(full_name)
@@ -13,13 +13,14 @@ class Student:
         self.group = group
         self.sex = sex
         self.favourite_colour = fav_colour
+        self.id = id
 
     def __repr__(self):
         return f"'{self.full_name}', {self.rating}, {self.age}, '{self.photo}', '{self.speciality}'," \
                f" '{self.group}', '{self.sex}', '{self.favourite_colour}'"
 
     def properties_list(self):
-        return [self.full_name, self.rating, self.age,
+        return [self.id, self.full_name, self.rating, self.age,
                 self.photo, self.speciality, self.group,
                 self.sex, self.favourite_colour]
 
