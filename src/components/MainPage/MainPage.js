@@ -34,6 +34,13 @@ function MainPage() {
                     </select>
                 </div>
             </div>
+            <div className={'fields_names'}>
+                <span className={'fields_names__name'}>ФИО</span>
+                <span className={'fields_names__speciality'}>Специальность</span>
+                <span className={'fields_names__group'}>Группа</span>
+                <span className={'fields_names__age'}>Возраст</span>
+                <span className={'fields_names__rating'}>Рейтинг</span>
+            </div>
             <StudentsList />
         </main>
     )

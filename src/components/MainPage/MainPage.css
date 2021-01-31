@@ -4,9 +4,34 @@
     align-items: center;
 }
 
-/*.page-primary-info {*/
-/*    margin-top: -70px;*/
-/*}*/
+.fields_names {
+    font-size: 16px;
+    display: grid;
+    grid-template-columns: 90px 300px 200px 200px 120px 120px 60px 60px;
+}
+
+.fields_names__name {
+    grid-column-start: 2;
+    overflow: hidden;
+}
+
+.fields_names__speciality {
+    grid-column-start: 3;
+    overflow: hidden;
+}
+
+.fields_names__group {
+    grid-column-start: 4;
+    overflow: hidden;
+}
+
+.fields_names__age {
+    grid-column-start: 5;
+}
+
+.fields_names__rating{
+    grid-column-start: 6;
+}
 
 .page-primary-info__head-name {
     font-weight: 700;

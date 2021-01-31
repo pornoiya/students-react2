@@ -1,4 +1,5 @@
 import React from 'react'
+import bin from '../../icons/bin.svg'
 import './StudentsList.css'
 import '../../App.css'
 import {Button} from "antd";
@@ -47,6 +48,7 @@ class StudentsList extends React.Component {
             headers: headers } )
             .then(res => res.json())
             .then(resp => alert(resp.message))
+        document.location.reload();
     }
 
     render() {
@@ -73,17 +75,21 @@ class StudentsList extends React.Component {
                     {students.map(resp => resp.student)
                         .map(st =>
                         <li key={st.id}
-                        className={'student-field'}>
+                        className={'student-field'}
+                        >
                             <span className={'student-field__photo'}></span>
-                            <span className={'student-field__name'}>{st.full_name}</span>
-                            <span className={'student-field__speciality'}>{st.speciality}</span>
-                            <span className={'student-field__group'}>{st.group}</span>
-                            <span className={'student-field__age'}>{st.age}</span>
-                            <span className={'student-field__rating'}>{st.rating}</span>
-                            <span>{st.fav_colour}</span>
+                            <span className={'fields_names__name'}>{st.full_name}</span>
+                            <span className={'fields_names__speciality'}>{st.speciality}</span>
+                            <span className={'fields_names__group'}>{st.group}</span>
+                            <span className={'fields_names__age'}>{st.age}</span>
+                            <span className={'fields_names__rating'}>{st.rating}</span>
+                            <div className={`color ${st.fav_colour}`}></div>
+
                             <button className={'delete-button'}
                                     onClick={() => { this.deleteRequest(st.id) }}
-                            > -- </button>
+                            >
+                                <img src={bin} alt={'Bin sign'}></img>
+                            </button>
                         </li>)}
                 </ul>
             );
