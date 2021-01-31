@@ -1,0 +1,70 @@
+.app-header {
+    height: 70px;
+    display: flex;
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    align-items: center;
+    padding: 0 123px;
+    column-gap: 45px;
+}
+
+.app-header_title, .app-logo, .app-logo_circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-header_title {
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 44px;
+}
+
+.app-logo {
+    height: 42px;
+    width: 42px;
+}
+
+.app-logo_circle, .app-logo_circle-inner {
+    position: absolute;
+    border: 5px  #49C2E8 solid;
+    border-radius: 50%;
+    margin: 0 auto;
+
+}
+
+.app-logo_circle {
+    height: 42px;
+    width: 42px;
+}
+
+.app-logo_circle-inner {
+    height: 23px;
+    width: 23px;
+}
+
+.author {
+    color: #49C2E8;
+    text-decoration: none;
+}
+
+.author:hover {
+    text-decoration: none;
+    color: #199DE8;
+}
+
+.particle {
+    margin: 0 6px;
+}
+
+@media screen and (min-width: 400px) and (max-width: 605px){
+    .app-header {
+        width: 100%;
+        padding-left: 20px;
+    }
+
+    .author, .particle {
+        display: none;
+    }
+}
