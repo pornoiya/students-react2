@@ -53,7 +53,6 @@ class DataBase:
         result = self.cur.fetchall()
         if result:
             return [Student(*tuple).properties_list() for tuple in result]
-            # return [Student(*tuple[1:]).properties_list() for tuple in result]
         else:
             raise errors.StudentNotFound("name")
 

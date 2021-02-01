@@ -1,4 +1,4 @@
-from flask import Flask, abort, request, jsonify, make_response, redirect, url_for
+from flask import Flask, abort, request, jsonify, make_response
 from student import Student
 from database_interaction import DataBase
 from web import errors
@@ -16,24 +16,10 @@ db = DataBase(config.DB_NAME, config.USER_NAME, config.PASSWORD,
               config.DB_HOST, config.DB_PORT, config.DB_TABLE_NAME)
 
 
-@app.route(f'/{root}/api/v1.0/students_list/<int:id>', methods=['GET', 'HEAD', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'])
-def get_student_by_id(id: int):
-    try:
-        s = db.get_student_by_id(id)
-        return jsonify({"student": {"full_name": s.full_name, "rating": s.rating, "age": s.age,
-                                    "photo_link": s.photo, "group": s.group, "speciality": s.speciality,
-                                    "sex": s.sex, "fav_colour": s.favourite_colour,
-                                    "id": s.id}}), 200
-    except errors.StudentNotFound as e:
-        return make_response(jsonify({"error": e.message}), e.code)
-
-
-@app.route(f'/{root}/api/v1.0/students_list/', methods=['GET', 'HEAD', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'])
+@app.route(f'/{root}/api/v1.0/students_list/', methods=['GET', 'HEAD', 'POST', 'OPTIONS', 'PUT', 'PATCH'])
 def get_students():
-    def get():
+    def handler():
         if lines:
-            app.logger.info('%s logged in successfully')
-
             students = [{"student": {
                 "full_name": line.full_name, "rating": line.rating,
                 "age": line.age, "photo_link": line.photo,
@@ -45,30 +31,26 @@ def get_students():
             students = None
         return jsonify({"students": students}), 200
 
-    def post():
+    def post_handler():
         try:
-            if request.method == 'POST':
-                prop_check = ["id", "full_name", "rating", "age", "photo_link", "speciality", "group", "sex",
-                              "fav_colour"]
-                blob = request.get_json(force=True)
-                app.logger.info('%s logged in successfully', str(blob))
-                for prop in prop_check:
-                    if prop not in blob:
-                        abort(400)
+            prop_check = ["id", "full_name", "rating", "age", "photo_link", "speciality", "group", "sex",
+                          "fav_colour"]
+            blob = request.get_json(force=True)
+            for prop in prop_check:
+                if prop not in blob:
+                    abort(400)
 
-                s = {prop: blob[prop] for prop in prop_check}
-                db.add_student(Student(**s))
-                return jsonify({200: "Successfully added"})
-            else:
-                return jsonify({200: "Successfully no"})
+            s = {prop: blob[prop] for prop in prop_check}
+            db.add_student(Student(**s))
+            return jsonify({"code": 200, "message": "Студент успешно добавлен!"})
 
         except errors.StudentExists as e:
-            return make_response(jsonify({"error": e.message}), e.code)
+            return make_response(jsonify({"code": e.code, "message": e.message}), e.code)
 
-    methods = {'GET': get,
-               'HEAD': get,
-               'OPTIONS': get,
-               'POST': post
+    methods = {'GET': handler,
+               'HEAD': handler,
+               'OPTIONS': handler,
+               'POST': post_handler
                }
     lines = db.get_all_students()
     return methods[request.method]()
@@ -78,27 +60,6 @@ def get_students():
 def delete_student_by_id(id: int):
     try:
         db.delete_student_by_id(id)
-        return jsonify({"message": "Successfully deleted"}), 201
+        return jsonify({"code": 200, "message": "Successfully deleted"}), 200
     except errors.StudentNotFound as e:
-        return make_response(jsonify({"error": e.message}), e.code)
-
-
-@app.route(f'/{root}/api/v1.0/students_list', methods=['GET', 'HEAD', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'])
-def add_student():
-    try:
-        if request.method == 'POST':
-            prop_check = ["id", "full_name", "rating", "age", "photo_link", "speciality", "group", "sex", "fav_colour"]
-            blob = request.get_json(force=True)
-            app.logger.info('%s logged in successfully', str(blob))
-            for prop in prop_check:
-                if prop not in blob:
-                    abort(400)
-
-            s = {prop: blob[prop] for prop in prop_check}
-            db.add_student(Student(**s))
-            return jsonify({200: "Successfully added"})
-        else:
-            return jsonify({200: "Successfully no"})
-
-    except errors.StudentExists as e:
-        return make_response(jsonify({"error": e.message}), e.code)
+        return make_response(jsonify({"code": e.code, "error": e.message}), e.code)
