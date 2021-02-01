@@ -7,7 +7,7 @@
 .fields_names {
     font-size: 16px;
     display: grid;
-    grid-template-columns: 90px 300px 200px 200px 120px 120px 60px 60px;
+    grid-template-columns: 100px 300px 250px 150px 120px 120px 60px 60px;
     margin: 5px 0;
 }
 
@@ -90,7 +90,7 @@ main {
 .search-block__sorting_by-category, .search-block__sorting_by-scending {
     color: black;
     background: white;
-    width: 59%;
+    width: 57%;
     border: none;
     height: 99%;
 }
@@ -101,7 +101,7 @@ main {
 }
 
 .search-block__sorting_by-scending {
-    width: 41%;
+    width: 40%;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }

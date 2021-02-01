@@ -74,23 +74,23 @@ class StudentsList extends React.Component {
                 <ul className={'items-container'}>
                     {students.map(resp => resp.student)
                         .map(st =>
-                        <li key={st.id}
-                        className={'student-field'}
-                        >
-                            <span className={'student-field__photo'}><img src={st.photo_link} alt={'User picture'}/></span>
-                            <span className={'fields_names__name'}>{st.full_name}</span>
-                            <span className={'fields_names__speciality'}>{st.speciality}</span>
-                            <span className={'fields_names__group'}>{st.group}</span>
-                            <span className={'fields_names__age'}>{st.age}</span>
-                            <span className={'fields_names__rating'}>{st.rating}</span>
-                            <div className={`color ${st.fav_colour}`}/>
-
-                            <button className={'delete-button'}
-                                    onClick={() => { this.deleteRequest(st.id) }}
+                            <li key={st.id}
+                                className={'student-field'}
                             >
-                                <img src={bin} alt={'Bin sign'}></img>
-                            </button>
-                        </li>)}
+                                <span className={'student-field__photo'}><img src={st.photo_link} alt={'User picture'}/></span>
+                                <span className={'fields_names__name'}>{st.full_name}</span>
+                                <span className={'fields_names__speciality'}>{st.speciality}</span>
+                                <span className={'fields_names__group'}>{st.group}</span>
+                                <span className={'fields_names__age'}>{st.age}</span>
+                                <span className={'fields_names__rating'}>{st.rating}</span>
+                                <div className={`color ${st.fav_colour}`}/>
+
+                                <button className={'delete-button'}
+                                        onClick={() => { this.deleteRequest(st.id) }}
+                                >
+                                    <img src={bin} alt={'Bin sign'} />
+                                </button>
+                            </li>)}
                 </ul>
             );
         }

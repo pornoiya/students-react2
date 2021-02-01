@@ -1,20 +1,10 @@
-import React, {useState} from 'react'
-import {Tabs, Button, Col, Alert} from 'antd'
+import React from 'react'
+import GoBackButton from "../Templates/Buttons/GoBackButton";
 import NewStudentForm from "../NewStudentForm/NewStudentForm";
-import {useHistory} from "react-router-dom";
-import Arrow from "../Templates/ArrowTemplate/Arrow";
-
-const BASE_URL = "http://localhost:3000/"
 
 function NewStudentPage() {
-    const history = useHistory();
-
     return <main>
-        <Button className={"app-button_transparent"}
-                onClick={() => history.goBack()}>
-            <Arrow/>
-            назад к списку студентов
-        </Button>
+        <GoBackButton title='Назад к списку студентов' />
         <NewStudentForm />
     </main>
 }

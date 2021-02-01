@@ -1,7 +1,7 @@
 .student-field {
     display: grid;
-    grid-template-columns: 60px 300px 200px 200px 120px 120px 60px 60px;
-
+    grid-template-columns: 70px 300px 250px 150px 120px 120px 60px 60px;
+    font-size: 15px;
     height: 50px;
     margin: 0 10px 20px 0;
     align-items: center;
@@ -12,6 +12,14 @@
     background: #FFFFFF;
     box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
     border-radius: 6px;
+    overflow: scroll;
+    height: 330px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.items-container::-webkit-scrollbar {
+    display: none;
 }
 
 .info {
@@ -42,10 +50,12 @@
 
 .student-field__photo {
     grid-column-start: 1;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: darkgray;
+    font-size: 10px;
+    overflow: hidden;
 }
 
 .student-field__photo img {
