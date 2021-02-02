@@ -128,7 +128,7 @@ export default function NewStudentForm () {
                             }
                         ]}
                     >
-                        <select>
+                        <select className={'fields-container__speciality'}>
                             <option value="" hidden='true' selected>Выбрать</option>
                             <option value="Математика">Математика</option>
                             <option value="ФИИТ">ФИИТ</option>
@@ -161,7 +161,7 @@ export default function NewStudentForm () {
                             }
                         ]}
                     >
-                        <select>
+                        <select className={'fields-container__sex'}>
                             <option value="" hidden='true' selected>Выбрать</option>
                             <option value="m">Мужской</option>
                             <option value="f">Женский</option>

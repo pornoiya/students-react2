@@ -3,6 +3,7 @@ import './MainPage.css'
 import { useHistory } from 'react-router-dom';
 import StudentsList from "../StudentsList/StudentsList";
 function MainPage() {
+
     const history = useHistory();
 
     return (
@@ -22,16 +23,14 @@ function MainPage() {
                 <input type='search' className='search-bar' placeholder='Поиск по имени' />
                 <div className='search-block__sorting'>
                     <select id={'sort-criteria-field'} className={'search-block__sorting_by-category'}>
-                        <option selected value="">Имя</option>
-                        <option value="rating-sorting">Рейтинг</option>
-                        <option value="age-sorting">Возраст</option>
+                        <option selected value="name">Имя</option>
+                        <option value="rating">Рейтинг</option>
+                        <option value="age">Возраст</option>
                     </select>
 
-                    <select className={'search-block__sorting_by-scending'}>
-                        <option selected value="descending">-
-                        </option>
-                        <option value="ascending">+</option>
-                    </select>
+                    <input type='checkbox' className={'search-block__sorting_by-ascending'}>
+                    </input>
+
                 </div>
             </div>
             <div className={'fields_names'}>
@@ -41,7 +40,7 @@ function MainPage() {
                 <span className={'fields_names__age'}>Возраст</span>
                 <span className={'fields_names__rating'}>Рейтинг</span>
             </div>
-            <StudentsList />
+            <StudentsList/>
         </main>
     )
 }

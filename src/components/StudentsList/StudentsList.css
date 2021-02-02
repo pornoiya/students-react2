@@ -1,6 +1,6 @@
 .student-field {
     display: grid;
-    grid-template-columns: 70px 300px 250px 150px 120px 120px 60px 60px;
+    grid-template-columns: 9% 25% 25% 12% 10% 8% 8%;
     font-size: 15px;
     height: 50px;
     margin: 0 10px 20px 0;
@@ -12,10 +12,6 @@
     background: #FFFFFF;
     box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
     border-radius: 6px;
-    overflow: scroll;
-    height: 330px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
 .items-container::-webkit-scrollbar {
@@ -30,6 +26,9 @@
 
 .student-field__name {
     grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
 }
 
 .student-field__speciality {
@@ -56,6 +55,8 @@
     background-color: darkgray;
     font-size: 10px;
     overflow: hidden;
+    grid-row-start: 1;
+    grid-row-end: 4;
 }
 
 .student-field__photo img {
@@ -66,6 +67,8 @@
 }
 
 .delete-button {
+    background-color: #FFFFFF;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
     border: none;
     width: 40px;
     height: 40px;
@@ -83,4 +86,74 @@
 
 .delete-button:active {
     background: darkgray;
+}
+
+@media screen and (max-width: 690px) {
+    .student-field {
+        display: grid;
+        padding: 0 10px;
+        gap: 10px;
+        grid-template-columns: 40px 12px 12px 50px 100px 30px;
+        grid-template-rows: 20px 20px 2px 15px 15px 15px;
+        font-size: 11px;
+        height: 170px;
+        margin: 0 10px 20px 0;
+        align-items: center;
+    }
+
+    .student-field__speciality, .student-field__age, .student-field__group, .student-field__rating,
+    .fields_names__speciality, .fields_names__group, .fields_names__age {
+        display: none;
+    }
+
+    .color {
+        grid-column-start: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        width: 12px;
+        height: 12px;
+    }
+
+    .student-field__photo {
+        grid-column-start: 1;
+        width: 40px;
+        height: 40px;
+    }
+
+    .fields_names__rating {
+        grid-column-start: 4;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .fields_names__name {
+        grid-column-start: 2;
+        grid-column-end: 6;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        overflow: hidden;
+    }
+
+    .delete-button {
+        grid-column-start: 6;
+        grid-row-start: 1;
+        grid-row-end: 4;
+    }
+
+    .items-container {
+        width:335px;
+        padding: 0;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 605px) and (max-width: 1114px){
+    .student-field {
+        font-size: 13px;
+    }
+
+    .student-field__photo {
+        width: 30px;
+        height: 30px;
+    }
 }

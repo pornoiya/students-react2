@@ -1,13 +1,15 @@
-input[type='text'], input[type='email'], input[type='number'], input, select {
+input[type='text'], input[type='email'], input[type='number'], .ant-input-number-input,
+.fields-container__speciality, .fields-container__sex {
     box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
     border-radius: 6px;
     border: none;
     background-color: white;
     height: 48px;
     width: 360px;
+    -webkit-appearance:none;
 }
 
-select {
+.fields-container__speciality, .fields-container__sex  {
     padding-left: 10px;
     width: 380px;
 }
@@ -18,11 +20,6 @@ select {
     border: #9a9a9a dotted 2px;
     border-radius: 50%;
     margin-right: 30px;
-}
-
-#photo-field {
-    display: none;
-    /*opacity: 0;*/
 }
 
 .photo-field-container {
@@ -52,9 +49,8 @@ select {
 }
 
 input:hover, input:focus, select:hover, select:focus {
-    box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.1);
 }
-
 
 .ant-input-number-handler-wrap {
     display: none;
@@ -109,4 +105,31 @@ input:hover, input:focus, select:hover, select:focus {
 
 .lgbt {
     background: linear-gradient(180deg, #FE0000 16.66%, #FD8C00 16.66%, #FFE500 33.32%, #119F0B 49.98%, #0644B3 83.3%, #C22EDC 83.3%);
+}
+
+@media screen and (max-width: 605px){
+    .fields-container {
+        flex-wrap: nowrap;
+        gap: 20px;
+        height: 460px;
+        overflow-x: scroll;
+    }
+
+    .student-form {
+        height: 100%;
+    }
+
+    .colors, input[type='text'], input[type='email'], input[type='number'], input {
+        width: 335px;
+    }
+
+    select {
+        width: 357px;
+    }
+
+    .color {
+        width: 12px;
+        height: 12px;
+    }
+
 }

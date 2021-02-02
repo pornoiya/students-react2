@@ -3,6 +3,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .App {
     text-align: center;
 }
@@ -71,7 +75,6 @@ body {
     font-weight: 500;
     display: flex;
     justify-content: start;
-    column-gap: 20px;
 }
 
 
@@ -80,7 +83,7 @@ body {
     outline: none;
 }
 
-.app-button:hover, .app-button_transparent:hover, input:hover, input:focus, select {
+.app-button:hover, .app-button_transparent:hover, input:hover, input:focus {
     box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.1);
 }
 
@@ -90,4 +93,14 @@ body {
 
 input {
     padding-left: 20px;
+}
+
+@media screen and (max-width: 605px) {
+    .app-button, .app-button_transparent {
+        width: 335px;
+    }
+
+    .app-button_transparent {
+        font-size: 10px;
+    }
 }

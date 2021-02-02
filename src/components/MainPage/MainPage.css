@@ -5,9 +5,10 @@
 }
 
 .fields_names {
+    text-overflow: ellipsis;
     font-size: 16px;
     display: grid;
-    grid-template-columns: 100px 300px 250px 150px 120px 120px 60px 60px;
+    grid-template-columns: 11% 23% 24% 11% 9% 6% 6%;
     margin: 5px 0;
 }
 
@@ -41,6 +42,8 @@
 
 .search-bar {
     width: 90%;
+    background: url('../../icons/search.svg') no-repeat scroll 13px 13px;
+    padding-left: 50px;
 }
 
 main {
@@ -87,12 +90,24 @@ main {
     width: 180px;
 }
 
-.search-block__sorting_by-category, .search-block__sorting_by-scending {
+.search-block__sorting_by-category, .search-block__sorting_by-ascending {
     color: black;
     background: white;
     width: 57%;
     border: none;
     height: 99%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    padding-left: 20px;
+    border-radius: 6px;
+}
+
+.search-block__sorting_by-category::-ms-expand,
+.search-block__sorting_by-ascending::-ms-expand
+{
+    display: none;
 }
 
 .search-block__sorting_by-category {
@@ -100,12 +115,18 @@ main {
     border-bottom-right-radius: 0;
 }
 
-.search-block__sorting_by-scending {
+.search-block__sorting_by-ascending {
     width: 40%;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    background: url("../../icons/orderby.svg") no-repeat center;
 }
 
+.search-block__sorting_by-ascending:checked {
+    background: url("../../icons/orderby.svg") no-repeat center;
+    transform: rotate(180deg) scaleX(-1);
+
+}
 
 
 @media screen and (max-width: 605px){
@@ -124,8 +145,23 @@ main {
         display: none;
     }
 
-    .search-block {
-        width: calc(100% - 40px);
-        margin: 0 20px 0 0;
+    .fields_names {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 605px){
+    .fields_names {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 690px) and (max-width: 1000px){
+    .fields_names {
+        text-overflow: ellipsis;
+        font-size: 14px;
+        display: grid;
+        grid-template-columns: 13% 20% 24% 11% 13% 6% 6%;
+        margin: 5px 0;
     }
 }

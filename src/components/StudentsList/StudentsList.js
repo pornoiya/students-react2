@@ -47,7 +47,6 @@ class StudentsList extends React.Component {
             method: "DELETE",
             headers: headers } )
             .then(res => res.json())
-            .then(resp => alert(resp.message))
         document.location.reload();
     }
 

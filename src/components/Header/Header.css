@@ -4,7 +4,6 @@
     box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
     align-items: center;
     padding: 0 123px;
-    column-gap: 45px;
 }
 
 .app-header_title, .app-logo, .app-logo_circle {
@@ -24,6 +23,7 @@
 .app-logo {
     height: 42px;
     width: 42px;
+    margin: 0 45px 0 0;
 }
 
 .app-logo_circle, .app-logo_circle-inner {
@@ -54,17 +54,21 @@
     color: #199DE8;
 }
 
-.particle {
+.app-header_title__particle {
     margin: 0 6px;
 }
 
-@media screen and (min-width: 400px) and (max-width: 605px){
+@media screen and (max-width: 605px){
     .app-header {
         width: 100%;
-        padding-left: 20px;
+        padding: 0;
     }
 
-    .author, .particle {
+    .app-logo {
+        margin-left: 20px;
+    }
+
+    .author, .app-header_title__particle {
         display: none;
     }
 }
