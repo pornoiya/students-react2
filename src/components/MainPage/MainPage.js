@@ -2,7 +2,29 @@ import React from 'react'
 import './MainPage.css'
 import { useHistory } from 'react-router-dom';
 import StudentsList from "../StudentsList/StudentsList";
+import {useState} from "react";
+
 function MainPage() {
+    const [sortInfo, setSorting] = useState({
+        criteria: 'full_name',
+        descending: ''
+    });
+
+    const [query, setQuery] = useState('');
+
+    const sortingHandler = (e) => {
+        const key = e.target.name
+        if (key === 'descending') {
+            setSorting({...sortInfo, [key]: e.target.checked})
+        }
+        else {
+            setSorting({...sortInfo, [key]: e.target.value})
+        }
+    }
+
+    const queryHandler = (e) => {
+        setQuery(e.target.value)
+    }
 
     const history = useHistory();
 
@@ -20,15 +42,25 @@ function MainPage() {
                 </button>
             </div>
             <div className='search-block'>
-                <input type='search' className='search-bar' placeholder='Поиск по имени' />
+                <input type='search' className='search-bar'
+                       placeholder='Поиск по имени'
+                       value={query}
+                       onChange={(event) => queryHandler(event)} />
                 <div className='search-block__sorting'>
-                    <select id={'sort-criteria-field'} className={'search-block__sorting_by-category'}>
-                        <option selected value="name">Имя</option>
+                    <select id={'sort-criteria-field'}
+                            name={'criteria'}
+                            className={'search-block__sorting_by-category'}
+                            onChange={(event) =>
+                                sortingHandler(event)}
+                    >
+                        <option selected value="full_name">Имя</option>
                         <option value="rating">Рейтинг</option>
                         <option value="age">Возраст</option>
                     </select>
 
-                    <input type='checkbox' className={'search-block__sorting_by-ascending'}>
+                    <input type='checkbox' className={'search-block__sorting_by-ascending'} name={'descending'}
+                           onChange={(event) => sortingHandler(event)}
+                    >
                     </input>
 
                 </div>
@@ -40,7 +72,7 @@ function MainPage() {
                 <span className={'fields_names__age'}>Возраст</span>
                 <span className={'fields_names__rating'}>Рейтинг</span>
             </div>
-            <StudentsList/>
+            <StudentsList descending={sortInfo.descending} criteria={sortInfo.criteria}/>
         </main>
     )
 }

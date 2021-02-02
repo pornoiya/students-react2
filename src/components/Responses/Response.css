@@ -1,0 +1,18 @@
+.message {
+    padding: 30px;
+    background: #FFFFFF;
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+}
+
+.success {
+    color: #49C2E8;
+}
+
+.error {
+    color: #FF0000;
+}

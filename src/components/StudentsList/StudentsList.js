@@ -17,8 +17,15 @@ class StudentsList extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            students: []
+            students: [],
+            queryResult: []
         };
+    }
+
+    componentDidUpdate() {
+        this.state.queryResult = this.state.students.filter(student =>
+            student.student.full_name.toLowerCase().includes(this.props.query)
+        );
     }
 
     componentDidMount() {
@@ -50,6 +57,21 @@ class StudentsList extends React.Component {
         document.location.reload();
     }
 
+    studentsSort(studentA, studentB) {
+        if (this.props.criteria === 'full_name') {
+            if (! this.props.descending)
+                return studentB.full_name.localeCompare(studentA.full_name)
+            else
+                return studentA > studentB ? 1 : -1
+        }
+        else {
+            if (! this.props.descending)
+                    return studentA[this.props.criteria] < studentB[this.props.criteria] ? -1: 1
+            else
+                return studentA[this.props.criteria] < studentB[this.props.criteria] ? 1: -1
+        }
+    }
+
     render() {
         const { error, isLoaded, students } = this.state;
         if (error) {
@@ -71,7 +93,9 @@ class StudentsList extends React.Component {
         else {
             return (
                 <ul className={'items-container'}>
-                    {students.map(resp => resp.student)
+                    {students
+                        .sort((a, b) => this.studentsSort(a.student, b.student))
+                        .map(resp => resp.student)
                         .map(st =>
                             <li key={st.id}
                                 className={'student-field'}

@@ -125,7 +125,6 @@ main {
 .search-block__sorting_by-ascending:checked {
     background: url("../../icons/orderby.svg") no-repeat center;
     transform: rotate(180deg) scaleX(-1);
-
 }
 
 
