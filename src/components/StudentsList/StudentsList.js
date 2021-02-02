@@ -24,7 +24,7 @@ class StudentsList extends React.Component {
 
     componentDidUpdate() {
         this.state.queryResult = this.state.students.filter(student =>
-            student.student.full_name.toLowerCase().includes(this.props.query)
+            student.student.full_name.toLowerCase().includes(this.props.query.toLowerCase())
         );
     }
 
@@ -39,7 +39,8 @@ class StudentsList extends React.Component {
                         isLoaded: true,
                         students: result.students,
                         queryResult: result.students.filter(jsoned =>
-                            jsoned.student.full_name.toLowerCase().includes(this.props.query))
+                            jsoned.student.full_name.toLowerCase()
+                                .includes(this.props.query.toLowerCase()))
                     });
                 },
                 (error) => {

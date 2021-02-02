@@ -55,7 +55,15 @@ export default function NewStudentForm () {
                             {
                                 required: true,
                                 message: 'Это поле обязательно',
-                            }
+                            },
+                            ({ }) => ({
+                                validator(_, value) {
+                                    if (!value || value.trim().split(" ").length === 3 && value.match(/[а-яА-ЯЁё]/)) {
+                                        return Promise.resolve();
+                                    }
+                                    return Promise.reject('Введите фамилию, имя, отчество кириллицей');
+                                },
+                            }),
                         ]}
                     >
                         <Input placeholder="Иванов Иван Иванович" />
