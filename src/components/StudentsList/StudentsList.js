@@ -37,7 +37,9 @@ class StudentsList extends React.Component {
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        students: result.students
+                        students: result.students,
+                        queryResult: result.students.filter(jsoned =>
+                            jsoned.student.full_name.toLowerCase().includes(this.props.query))
                     });
                 },
                 (error) => {
@@ -93,7 +95,7 @@ class StudentsList extends React.Component {
         else {
             return (
                 <ul className={'items-container'}>
-                    {students
+                    {this.state.queryResult
                         .sort((a, b) => this.studentsSort(a.student, b.student))
                         .map(resp => resp.student)
                         .map(st =>

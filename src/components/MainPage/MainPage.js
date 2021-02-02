@@ -72,7 +72,7 @@ function MainPage() {
                 <span className={'fields_names__age'}>Возраст</span>
                 <span className={'fields_names__rating'}>Рейтинг</span>
             </div>
-            <StudentsList descending={sortInfo.descending} criteria={sortInfo.criteria}/>
+            <StudentsList descending={sortInfo.descending} criteria={sortInfo.criteria} query={query}/>
         </main>
     )
 }
