@@ -1,5 +1,6 @@
 import React from 'react'
 import bin from '../../icons/bin.svg'
+import star from '../../icons/star.svg'
 import './StudentsList.css'
 import '../../App.css'
 import {Button} from "antd";
@@ -108,7 +109,9 @@ class StudentsList extends React.Component {
                                 <span className={'fields_names__speciality'}>{st.speciality}</span>
                                 <span className={'fields_names__group'}>{st.group}</span>
                                 <span className={'fields_names__age'}>{st.age}</span>
+                                <div className={'student-field_divider'} />
                                 <span className={'fields_names__rating'}>{st.rating}</span>
+                                <img src={star} alt='' className={'rating_label'}/>
                                 <div className={`color ${st.fav_colour}`}/>
 
                                 <button className={'delete-button'}

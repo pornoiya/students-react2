@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+.rating_label, .student-field_divider {
+    display: none;
+}
+
 .items-container, .info {
     padding: 36px;
     background: #FFFFFF;
@@ -19,6 +23,7 @@
 }
 
 .info {
+    background: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -90,20 +95,46 @@
 
 @media screen and (max-width: 690px) {
     .student-field {
+        border-radius: 6px;
         display: grid;
-        padding: 0 10px;
+        padding: 0 0 0 10px;
         gap: 10px;
+        width: 325px;
         grid-template-columns: 40px 12px 12px 50px 100px 30px;
-        grid-template-rows: 20px 20px 2px 15px 15px 15px;
+        grid-template-rows: 25px 25px 2px 13px 13px 13px;
         font-size: 11px;
         height: 170px;
         margin: 0 10px 20px 0;
         align-items: center;
+        box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
     }
 
-    .student-field__speciality, .student-field__age, .student-field__group, .student-field__rating,
-    .fields_names__speciality, .fields_names__group, .fields_names__age {
-        display: none;
+    .fields_names__speciality, .fields_names__age, .fields_names__group {
+        grid-column-start: 3;
+        grid-column-end: 6;
+    }
+
+    .fields_names__speciality {
+        grid-row-start: 5;
+    }
+
+    .fields_names__group {
+        grid-row-start: 6;
+    }
+
+    .fields_names__age {
+        grid-row-start: 4;
+        grid-column-start: 3;
+    }
+
+    .fields_names__age::before, .fields_names__speciality::before, .fields_names__group::before {
+        border-radius: 50%;
+        width: 6px;
+        height: 6px;
+        background-color: #49C2E8;
+        content: '';
+        position: absolute;
+        left: 84px;
     }
 
     .color {
@@ -118,6 +149,15 @@
         grid-column-start: 1;
         width: 40px;
         height: 40px;
+    }
+
+    .rating_label {
+        display: block;
+        grid-column-start: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        width: 12px;
+        height: 12px;
     }
 
     .fields_names__rating {
@@ -144,10 +184,26 @@
         width:335px;
         padding: 0;
         height: 100%;
+        box-shadow: none;
+    }
+
+    .student-field_divider {
+        display: block;
+        height: 1px;
+        width: 335px;
+        background: #000000;
+        margin: -10px;
+        grid-column-start: 1;
+        grid-row-start: 3;
+        opacity: 0.05;
+    }
+
+    .fields_names {
+        display: none;
     }
 }
 
-@media screen and (min-width: 605px) and (max-width: 1114px){
+@media screen and (min-width: 605px) and (max-width: 994px){
     .student-field {
         font-size: 13px;
     }
@@ -155,5 +211,13 @@
     .student-field__photo {
         width: 30px;
         height: 30px;
+    }
+
+    .rating_label {
+        display: none;
+    }
+
+    .fields_names__age::before, .fields_names__speciality::before, .fields_names__group::before {
+        display: none;
     }
 }

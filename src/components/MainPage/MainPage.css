@@ -153,6 +153,10 @@ main {
     .fields_names {
         display: none;
     }
+
+    .search-bar {
+        width: 335px;
+    }
 }
 
 @media screen and (min-width: 690px) and (max-width: 1000px){
@@ -162,5 +166,9 @@ main {
         display: grid;
         grid-template-columns: 13% 20% 24% 11% 13% 6% 6%;
         margin: 5px 0;
+    }
+
+    .search-bar {
+        width: 335px;
     }
 }
