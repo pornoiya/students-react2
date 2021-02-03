@@ -29,29 +29,6 @@
     justify-content: space-between;
 }
 
-.student-field__name {
-    grid-column-start: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
-
-}
-
-.student-field__speciality {
-    grid-column-start: 3;
-}
-
-.student-field__group {
-    grid-column-start: 4;
-}
-
-.student-field__age {
-    grid-column-start: 5;
-}
-
-.student-field__rating {
-    grid-column-start: 6;
-}
-
 .student-field__photo {
     grid-column-start: 1;
     width: 50px;
@@ -137,7 +114,7 @@
         left: 84px;
     }
 
-    .color {
+    .student-field .color {
         grid-column-start: 2;
         grid-row-start: 2;
         grid-row-end: 3;

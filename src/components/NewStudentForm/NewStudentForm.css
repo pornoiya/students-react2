@@ -127,9 +127,10 @@ input:hover, input:focus, select:hover, select:focus {
         width: 357px;
     }
 
-    .color {
-        width: 12px;
-        height: 12px;
+    .fields-container div[role='alert'] {
+        height: 3px;
+        font-size: 10px;
+        color: red;
+        margin: 0;
     }
-
 }

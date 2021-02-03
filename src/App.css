@@ -1,7 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+@font-face {
+    font-family: 'Geometria';
+    src: url('fonts/geometria/Geometria.eot');
+    src: url('fonts/geometria/Geometria.eot?#iefix') format('embedded-opentype'),
+    url('fonts/geometria/Geometria.woff') format('woff'),
+    url('fonts/geometria/Geometria.ttf')  format('truetype');
+}
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Geometria', 'Roboto', sans-serif;
 }
 
 ::-webkit-scrollbar {

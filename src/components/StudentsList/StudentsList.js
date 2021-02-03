@@ -66,7 +66,7 @@ class StudentsList extends React.Component {
             if (! this.props.descending)
                 return studentB.full_name.localeCompare(studentA.full_name)
             else
-                return studentA > studentB ? 1 : -1
+                return (studentB.full_name.localeCompare(studentA.full_name) * -1)
         }
         else {
             if (! this.props.descending)
@@ -98,8 +98,8 @@ class StudentsList extends React.Component {
             return (
                 <ul className={'items-container'}>
                     {this.state.queryResult
-                        .sort((a, b) => this.studentsSort(a.student, b.student))
                         .map(resp => resp.student)
+                        .sort((a, b) => this.studentsSort(a, b))
                         .map(st =>
                             <li key={st.id}
                                 className={'student-field'}

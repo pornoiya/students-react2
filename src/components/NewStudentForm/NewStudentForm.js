@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './NewStudentForm.css'
-import {Form, Input, Button, InputNumber} from 'antd'
+import {Form, Input, Button, InputNumber, Upload, message } from 'antd'
 import {useHistory} from "react-router-dom";
 
 const BASE_URL = "http://localhost:8080/students/api/v1.0/students_list/"
@@ -13,6 +13,8 @@ const headers = {
 }
 
 export default function NewStudentForm () {
+    const [avatar, setAvatar] = useState('');
+
     const [ form ] = Form.useForm();
 
     const history = useHistory();
@@ -29,11 +31,14 @@ export default function NewStudentForm () {
                     history.push('/responseSuccess', { code: resp.code, message: resp.message })
                 } else {
                     history.push('/responseFail', { code: resp.code, message: resp.message })
-
                 }
             })
 
     };
+
+    const fileChangeHandler = (event) => {
+        setAvatar(event.target.files[0])
+    }
 
     return (
         <>
@@ -58,8 +63,13 @@ export default function NewStudentForm () {
                             },
                             ({ }) => ({
                                 validator(_, value) {
-                                    if (!value || value.trim().split(" ").length === 3 && value.match(/[а-яА-ЯЁё]/)) {
+                                    const nameParts = value.trim().split(" ");
+                                    if (!value || nameParts.length === 3 &&
+                                        nameParts.every(value => value.match(/[А-ЯЁ][а-яё]*/))) {
                                         return Promise.resolve();
+                                    }
+                                    else if (nameParts.some(value => !value.match(/[А-ЯЁ][а-яё]*/))) {
+                                        return Promise.reject('Пожалуйста введите данные с заглавной буквы');
                                     }
                                     return Promise.reject('Введите фамилию, имя, отчество кириллицей');
                                 },
@@ -153,7 +163,15 @@ export default function NewStudentForm () {
                             {
                                 required: true,
                                 message: 'Это поле обязательно',
-                            }
+                            },
+                            ({ }) => ({
+                                validator(_, value) {
+                                    if (!value || value.trim().match(/[А-ЯЁ]+-\d+/)) {
+                                        return Promise.resolve();
+                                    }
+                                    return Promise.reject('Группа содержит заглавные буквы и цифры, разделенные дефисом.');
+                                },
+                            })
                         ]}
                     >
                         <Input placeholder="ПИ-101" />
@@ -186,7 +204,8 @@ export default function NewStudentForm () {
                             }
                         ]}
                     >
-                        <Input placeholder="photo_link" />
+                        <input type="file" name={'photo_link'} onChange={fileChangeHandler} accept="image/*" />
+                        {/*<Input placeholder="photo_link" />*/}
                     </Form.Item>
                     </div>
 
