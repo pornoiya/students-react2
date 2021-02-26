@@ -107,19 +107,24 @@ input:hover, input:focus, select:hover, select:focus {
     background: linear-gradient(180deg, #FE0000 16.66%, #FD8C00 16.66%, #FFE500 33.32%, #119F0B 49.98%, #0644B3 83.3%, #C22EDC 83.3%);
 }
 
-@media screen and (max-width: 605px){
+@media screen and (max-width: 690px){
     .fields-container {
         flex-wrap: nowrap;
         gap: 20px;
-        height: 460px;
-        overflow-x: scroll;
+        height: 100%;
     }
 
     .student-form {
         height: 100%;
     }
 
-    .colors, input[type='text'], input[type='email'], input[type='number'], input {
+    input[type='text'], input[type='email'], input[type='number'],
+    input, .fields-container__group, .ant-input, .ant-input-number-input
+    {
+        width: 315px;
+    }
+
+    .fields-container__speciality, .fields-container__sex, .colors {
         width: 335px;
     }
 
@@ -133,4 +138,9 @@ input:hover, input:focus, select:hover, select:focus {
         color: red;
         margin: 0;
     }
+}
+
+.ant-upload-list-item-name {
+    width: 60px;
+    text-overflow: ellipsis;
 }

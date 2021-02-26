@@ -67,7 +67,7 @@ body {
     font-weight: 700;
     display: flex;
     justify-content: center;
-    column-gap: 20px;
+    /*column-gap: 20px;*/
 }
 
 .app-button_transparent {
@@ -103,7 +103,7 @@ input {
     padding-left: 20px;
 }
 
-@media screen and (max-width: 605px) {
+@media screen and (max-width: 690px) {
     .app-button, .app-button_transparent {
         width: 335px;
     }

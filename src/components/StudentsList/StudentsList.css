@@ -180,7 +180,7 @@
     }
 }
 
-@media screen and (min-width: 605px) and (max-width: 994px){
+@media screen and (min-width: 605px){
     .student-field {
         font-size: 13px;
     }
@@ -193,8 +193,11 @@
     .rating_label {
         display: none;
     }
+}
 
-    .fields_names__age::before, .fields_names__speciality::before, .fields_names__group::before {
-        display: none;
-    }
+.fields_names__group, .fields_names__speciality, .fields_names__name {
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }

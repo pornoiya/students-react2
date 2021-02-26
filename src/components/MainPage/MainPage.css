@@ -14,17 +14,22 @@
 
 .fields_names__name {
     grid-column-start: 2;
-    overflow: hidden;
+    grid-column-end: 3;
 }
 
 .fields_names__speciality {
     grid-column-start: 3;
-    overflow: hidden;
+    grid-column-end: 4;
 }
 
 .fields_names__group {
     grid-column-start: 4;
-    overflow: hidden;
+    grid-column-end: 5;
+}
+
+.fields_names__group, .fields_names__speciality, .fields_names__name {
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .fields_names__age {
@@ -40,27 +45,19 @@
     font-size: 40px;
 }
 
-.search-bar {
-    width: 90%;
-    background: url('../../icons/search.svg') no-repeat scroll 13px 13px;
-    padding-left: 50px;
-}
-
 main {
     height: 100%;
     width: calc(100% - 260px);
-    margin: 54px 130px;
-}
-
-.app-button_plus_sign {
-    width: 16px;
-    height: 16px;
+    padding: 54px 130px;
 }
 
 .app-button_plus_sign {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 16px;
+    height: 16px;
+    margin-right: 20px;
 }
 
 .app-button_rectangle, .app-button_rectangle_rotated {
@@ -82,8 +79,11 @@ main {
     margin: 23px 0;
 }
 
-.search-block {
-    column-gap: 20px;
+.search-bar {
+    width: 335px;
+    background: url('../../icons/search.svg') no-repeat scroll 13px 13px;
+    padding-left: 50px;
+    margin-right: 20px;
 }
 
 .search-block__sorting {
@@ -128,7 +128,7 @@ main {
 }
 
 
-@media screen and (max-width: 605px){
+@media screen and (max-width: 690px){
     .page-primary-info {
         flex-direction: column;
         justify-content: space-between;
@@ -137,7 +137,7 @@ main {
 
     main {
         width: 100%;
-        margin: 39px 20px;
+        padding: 39px 20px;
     }
 
     .search-block__sorting {
@@ -153,13 +153,19 @@ main {
     .fields_names {
         display: none;
     }
+}
 
+@media screen and (max-width: 335px) {
     .search-bar {
+        margin-right: 0;
+    }
+
+    .search-block {
         width: 335px;
     }
 }
 
-@media screen and (min-width: 690px) and (max-width: 1000px){
+@media screen and (min-width: 690px) {
     .fields_names {
         text-overflow: ellipsis;
         font-size: 14px;
@@ -169,6 +175,6 @@ main {
     }
 
     .search-bar {
-        width: 335px;
+        width: 90%;
     }
 }

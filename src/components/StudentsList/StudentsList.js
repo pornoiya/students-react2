@@ -23,11 +23,14 @@ class StudentsList extends React.Component {
         };
     }
 
+
     componentDidUpdate() {
-        this.state.queryResult = this.state.students.filter(student =>
+        this.state.queryResult = ! this.state.students ? null :
+            this.state.students.filter(student =>
             student.student.full_name.toLowerCase().includes(this.props.query.toLowerCase())
         );
     }
+
 
     componentDidMount() {
         fetch(BASE_URL, {
@@ -36,12 +39,14 @@ class StudentsList extends React.Component {
             .then(res => res.json())
             .then(
                 (result) => {
+                    const queryValue = ! result.students ? null
+                        : result.students.filter(jsoned =>
+                        jsoned.student.full_name.toLowerCase()
+                            .includes(this.props.query.toLowerCase()))
                     this.setState({
                         isLoaded: true,
                         students: result.students,
-                        queryResult: result.students.filter(jsoned =>
-                            jsoned.student.full_name.toLowerCase()
-                                .includes(this.props.query.toLowerCase()))
+                        queryResult: queryValue
                     });
                 },
                 (error) => {
@@ -104,7 +109,8 @@ class StudentsList extends React.Component {
                             <li key={st.id}
                                 className={'student-field'}
                             >
-                                <span className={'student-field__photo'}><img src={st.photo_link} alt={'User picture'}/></span>
+                                <span className={'student-field__photo'}>
+                                    <img src={st.photo_link} alt={'User picture'}/></span>
                                 <span className={'fields_names__name'}>{st.full_name}</span>
                                 <span className={'fields_names__speciality'}>{st.speciality}</span>
                                 <span className={'fields_names__group'}>{st.group}</span>
