@@ -1,0 +1,11 @@
+click==7.1.2
+Flask==1.1.2
+Flask-Avatars==0.2.2
+Flask-Cors==3.0.10
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+Pillow==8.1.0
+psycopg2-binary==2.8.6
+six==1.15.0
+Werkzeug==1.0.1

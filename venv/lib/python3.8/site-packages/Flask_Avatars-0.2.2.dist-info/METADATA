@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: Flask-Avatars
+Version: 0.2.2
+Summary: All avatar generators in one place.
+Home-page: https://github.com/greyli/flask-avatars
+Author: Grey Li
+Author-email: withlihui@gmail.com
+License: MIT
+Keywords: flask extension development
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+Requires-Dist: Flask
+Requires-Dist: Pillow
+
+# Flask-Avatars
+All avatar generators in one place:
+
+* Default avatar
+* Gravatar
+* Robohash
+* Social media avatar
+* Identicon generation
+* Avatar crop
+
+## Links
+
+* Documentation: https://flask-avatars.readthedocs.io/en/latest/
+* PyPI: https://pypi.org/project/Flask-Avatars/
+
+## License
+
+This project is licensed under the MIT License (see the
+`LICENSE` file for details).
+
+
