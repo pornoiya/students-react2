@@ -1,4 +1,5 @@
 from web import errors
+from base64 import b64decode
 
 
 class Student:

@@ -9,3 +9,4 @@ PASSWORD = "qwerty"
 DB_HOST = "0.0.0.0"
 DB_PORT = 5432
 DB_TABLE_NAME = "students"
+DB_TABLE_AVATARS = "avatars"
