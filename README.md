@@ -1,22 +1,30 @@
-# Students app
+# Students App
 
-Students app -- веб-приложение, позволяющее получить список студентов, добавлять/удалять студента по id.
-
+Students App –– простой интерфейс работы со списком студентов. Можно просматривать список студентов, удалить студента, добавить студента.
+## Технологии
+Для бэкенда я использовала докер, flask, postgres базу данных
+## Подготовка
+- понадобится докер
+- понадобятся зависимости, которые есть в requirements.txt. установка –– pip3 install requirements.txt
 ## Usage of API
+Реализована обработка 3 необходимых запросов:
 GET REQUEST: 
-get a student
+Получить список студентов
 ```bash
-curl -i http://localhost:8080/students/api/v1.0/students_list/<id: id of student>
+curl -i http://localhost:8080/students/api/v1.0/students_list/
 ```
 DELETE REQUEST:
-delete a student
+удалить студента по айди
 ```bash
 curl -X DELETE http://localhost:8080/students/api/v1.0/students_list/<id: id of student>
 ```
 POST REQUEST:
-add a student
+добавить студента
 ```bash
-curl -i -H "Content-Type: application/json" -X POST -d "{\"id\": 3232, \"full_name\":\"Кихтенко Татьяна Михайловна\", \"rating\":100, \"age\":20, \"photo_link\": \"http:/IIIvan\", \"speciality\":\"Математика и КН\", \"group\":\"КН-302\", \"sex\":\"f\", \"fav_colour\":\"red\"}" http://localhost:8080/students/api/v1.0/students_list
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"id":"212","full_name":"Абукаров Алексей Васильевич", "rating": 23, "age": 21, "photo_link": "link", "speciality": "Математика", "group": "МТ-201", "sex": "m", "fav_colour": "black"}' \
+  http://localhost:8080/students/api/v1.0/students_list/
 ```
 
 ## Автор
