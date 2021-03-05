@@ -16,7 +16,7 @@ class StudentsBase(DataBase):
         self.cur.execute(f"CREATE SEQUENCE IF NOT EXISTS counter START 1;")
         self.cur.execute(f"CREATE TABLE IF NOT EXISTS {self.table_name}"
                          f" (id INTEGER, full_name TEXT, rating FLOAT, "
-                         f"age INTEGER, photo BYTEA, specialty TEXT, "
+                         f"age INTEGER, photo TEXT, specialty TEXT, "
                          f"student_group TEXT, sex CHAR(1), colour CHAR(7))")
         self.conn.commit()
 
