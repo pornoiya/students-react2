@@ -34,14 +34,14 @@ input[type='text'], input[type='email'], input[type='number'], .ant-input-number
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    gap: 20px;
 }
 
 .fields-container div[role='alert'] {
     height: 3px;
     font-size: 12px;
     color: red;
-    margin: 0;
+    margin: 0 0 20px 0;
+
 }
 
 .fields-container input, .fields-container select, .fields-container .colors {
