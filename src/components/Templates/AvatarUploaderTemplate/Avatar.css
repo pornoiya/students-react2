@@ -20,6 +20,7 @@
     box-shadow: 0 7px 64px rgba(0, 0, 0, 0.1);
     width: 70px;
     height: 70px;
+    margin-right: 20px;
 }
 
 .ant-upload-span {
@@ -60,7 +61,6 @@
     border: none;
     display: flex;
     align-items: center;
-    gap: 20px;
     width: 380px;
     padding: 0;
 }
@@ -85,7 +85,6 @@
 .ant-upload-list-item-actions {
     display: none;
 }
-
 
 
 /*заглушка ошибки от при загрузке аватара*/
