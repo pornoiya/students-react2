@@ -110,7 +110,6 @@ input:hover, input:focus, select:hover, select:focus {
 @media screen and (max-width: 690px){
     .fields-container {
         flex-wrap: nowrap;
-        gap: 20px;
         height: 100%;
     }
 
@@ -135,8 +134,7 @@ input:hover, input:focus, select:hover, select:focus {
     .fields-container div[role='alert'] {
         height: 3px;
         font-size: 10px;
-        color: red;
-        margin: 0;
+        margin: 0 0 20px 0;
     }
 }
 
