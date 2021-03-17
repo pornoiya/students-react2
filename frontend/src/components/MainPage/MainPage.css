@@ -73,6 +73,10 @@ main {
     transform: rotate(90deg);
 }
 
+.search-block {
+    height: 74px;
+}
+
 .search-bar, .search-block__sorting {
     height: 48px;
     box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
@@ -82,14 +86,20 @@ main {
 }
 
 .search-bar {
-    width: 335px;
-    background: url('../../icons/search.svg') no-repeat scroll 13px 13px;
-    padding-left: 50px;
+    font-family: 'Geometria', sans-serif;
+    font-size: 16px;
+    background: url('../../icons/search.svg') no-repeat scroll 21px 14px;
+    padding-left: 55px;
     margin-right: 20px;
 }
 
+.search-bar::placeholder {
+    color: Black;
+    opacity: 0.3;
+}
+
 .search-block__sorting {
-    width: 180px;
+    width: 196px;
 }
 
 .search-block__sorting_by-category, .search-block__sorting_by-ascending {
@@ -118,17 +128,17 @@ main {
 }
 
 .search-block__sorting_by-ascending {
+    padding-right: 40px;
     width: 40%;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    background: url("../../icons/orderby.svg") no-repeat center;
+    background: url("../../icons/orderby.svg") no-repeat 38px 13px;
 }
 
 .search-block__sorting_by-ascending:checked {
-    background: url("../../icons/orderby.svg") no-repeat center;
+    background: url("../../icons/orderby.svg") no-repeat 38px 14px;
     transform: rotate(180deg) scaleX(-1);
 }
-
 
 @media screen and (max-width: 690px){
     .page-primary-info {
@@ -179,4 +189,10 @@ main {
     .search-bar {
         width: 90%;
     }
+}
+
+.search-block__sorting_by-category {
+    font-family: 'Geometria', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
 }
