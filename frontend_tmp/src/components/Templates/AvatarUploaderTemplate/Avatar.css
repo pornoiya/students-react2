@@ -1,0 +1,94 @@
+.ant-upload.ant-upload-select.ant-upload-select-picture-card {
+    width: 380px;
+    height: 70px;
+}
+
+.upload-field__title {
+    font-family: 'Geometria', 'Roboto', sans-serif;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.upload-field__title:hover {
+    color: #49C2E8;
+}
+
+.upload-field__button {
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.1);
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+}
+
+.ant-upload-span {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.ant-upload-list.ant-upload-list-picture-card {
+    height: 70px;
+    margin: 0 0 40px 0;
+}
+
+.ant-upload-list-item-thumbnail {
+    width: 90px;
+    height: 90px;
+}
+
+.ant-upload-list-item-name {
+    width: 270px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ant-upload-list-item-image {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin: 10px 0;
+}
+
+.upload-field {
+    margin: 10px 0;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    width: 380px;
+    padding: 0;
+}
+
+.upload-field:focus, .upload-field:active, .ant-upload:focus, .ant-upload:active {
+    outline: none;
+}
+
+.upload-field:focus > .upload-field__button {
+    box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.1);
+}
+
+.upload-field:active > .upload-field__button {
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.1);
+}
+
+.upload-field:active > .upload-field__title {
+    text-decoration: none;
+    color: #199DE8;
+}
+
+.ant-upload-list-item-actions {
+    display: none;
+}
+
+
+
+/*заглушка ошибки от при загрузке аватара*/
+.ant-tooltip-inner {
+    display: none;
+}

@@ -1,0 +1,22 @@
+.arrow__cone {
+    transform: rotate(45deg);
+    width: 9px;
+    height: 9px;
+    border-bottom: black 2px solid;
+    border-left: black 2px solid;
+    margin-right: -6px;
+}
+
+.arrow__rectangle {
+    transform: rotate(90deg);
+    background: black;
+    height: 15px;
+    width: 2px;
+    margin: 0 0 0 2px;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}

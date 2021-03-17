@@ -1,0 +1,80 @@
+.app-header {
+    height: 70px;
+    width: 120%;
+    display: flex;
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    align-items: center;
+}
+
+.app-header_title, .app-logo, .app-logo_circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-header_title {
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 44px;
+}
+
+.app-logo {
+    height: 32px;
+    width: 32px;
+    margin: 0 45px 0 123px;
+}
+
+
+.app-logo_circle, .app-logo_circle-inner {
+    position: absolute;
+    border: 5px  #49C2E8 solid;
+    border-radius: 50%;
+    margin: 0 auto;
+
+}
+
+.app-logo_circle {
+    height: 32px;
+    width: 32px;
+}
+
+.app-logo_circle-inner {
+    height: 14px;
+    width: 14px;
+}
+
+.author {
+    color: #49C2E8;
+    text-decoration: none;
+}
+
+.author:hover {
+    text-decoration: none;
+    color: #199DE8;
+}
+
+.app-header_title__particle {
+    margin: 0 6px;
+}
+
+@media screen and (max-width: 690px){
+    .app-header {
+        padding: 0 20px 0 20px;
+    }
+
+    .app-logo {
+        margin-left: 20px;
+    }
+
+    .author, .app-header_title__particle {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 335px) {
+    .app-header {
+        width: 335px;
+    }
+}
