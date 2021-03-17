@@ -13,7 +13,7 @@ function Header() {
             <div className='app-header-info-container'>
                 <h1 className='app-header_title'>STUDENTS
                     <span className={'app-header_title__particle'}>by</span>
-                    <a href='https://github.com/pornoiya' className='author'>@pornoiya</a></h1>
+                    <a href='https://github.com/pornoiya' className='author'>pornoiya</a></h1>
             </div>
         </header>)
 }
