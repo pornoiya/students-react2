@@ -5,11 +5,21 @@
 }
 
 .fields_names {
-    text-overflow: ellipsis;
-    font-size: 16px;
+    height: 34px;
+    margin: 20px 0 5px;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: 10;
+    grid-template-columns: 80px auto 280px 96px 96px 96px 60px 49px;
     display: grid;
-    grid-template-columns: 11% 23% 24% 11% 9% 6% 6%;
-    margin: 5px 0;
+}
+
+.fields_names > * {
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: start;
 }
 
 .fields_names__name {
@@ -36,7 +46,7 @@
     grid-column-start: 5;
 }
 
-.fields_names__rating{
+.fields_names__rating {
     grid-column-start: 6;
 }
 
@@ -48,7 +58,6 @@
 
 main {
     height: 100%;
-    width: calc(100% - 260px);
     padding: 41px 130px;
 }
 
@@ -147,9 +156,22 @@ main {
         align-items: start;
     }
 
+    .page-primary-info__head-name {
+        font-size: 30px;
+    }
+
     main {
         width: 100%;
-        padding: 39px 20px;
+        padding: 19px 20px;
+    }
+
+    .search-block {
+        width: 335px;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin: 23px 0 23px;
     }
 
     .search-block__sorting {
@@ -181,18 +203,23 @@ main {
     .fields_names {
         text-overflow: ellipsis;
         font-size: 14px;
-        display: grid;
-        grid-template-columns: 13% 20% 24% 11% 13% 6% 6%;
         margin: 5px 0;
     }
 
     .search-bar {
-        width: 90%;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 690px) and (max-width: 1033px) {
+    .fields_names {
+        /*grid-template-columns: 61px auto 96px 66px 60px 30px;*/
+        grid-template-columns: 99px 70px 96px 66px 66px 60px 30px;
     }
 }
 
 .search-block__sorting_by-category {
     font-family: 'Geometria', sans-serif;
-    font-size: 12px;
     font-weight: 500;
+    font-size: 12px;
 }

@@ -65,7 +65,7 @@
     }
 
     .app-logo {
-        margin-left: 20px;
+        margin: 0 25px 0 10px;
     }
 
     .author, .app-header_title__particle {

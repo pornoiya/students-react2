@@ -1,17 +1,17 @@
 input[type='text'], input[type='email'], input[type='number'], .ant-input-number-input,
-.fields-container__speciality, .fields-container__sex {
+.fields-container__speciality, .fields-container__sex, .colors, .fields-container__color {
     box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
     border-radius: 6px;
     border: none;
     background-color: white;
     height: 48px;
-    width: 360px;
+    width: 380px;
     -webkit-appearance:none;
+    font-family: 'Geometria', sans-serif;
 }
 
-.fields-container__speciality, .fields-container__sex  {
-    padding-left: 10px;
-    width: 380px;
+.ant-form-item-label {
+    font-weight: 500;
 }
 
 .photo-picker {
@@ -41,7 +41,10 @@ input[type='text'], input[type='email'], input[type='number'], .ant-input-number
     font-size: 12px;
     color: red;
     margin: 0 0 20px 0;
+}
 
+.go_back {
+    margin-top: -15px;
 }
 
 .fields-container input, .fields-container select, .fields-container .colors {
@@ -57,12 +60,9 @@ input:hover, input:focus, select:hover, select:focus {
 }
 
 .colors {
-    background: #FFFFFF;
-    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
-    border-radius: 6px;
-    height: 48px;
-    width: 380px;
     display: flex;
+    width: 340px;
+    padding: 20px;
     justify-content: space-between;
     align-items: center;
 }
@@ -72,7 +72,6 @@ input:hover, input:focus, select:hover, select:focus {
     height: 30px;
     opacity: 0.7;
     border-radius: 50%;
-    margin: auto;
 }
 
 .colors input[type=radio]:checked + label {
@@ -107,6 +106,10 @@ input:hover, input:focus, select:hover, select:focus {
     background: linear-gradient(180deg, #FE0000 16.66%, #FD8C00 16.66%, #FFE500 33.32%, #119F0B 49.98%, #0644B3 83.3%, #C22EDC 83.3%);
 }
 
+.mobile {
+    display: none;
+}
+
 @media screen and (max-width: 690px){
     .fields-container {
         flex-wrap: nowrap;
@@ -118,23 +121,36 @@ input:hover, input:focus, select:hover, select:focus {
     }
 
     input[type='text'], input[type='email'], input[type='number'],
-    input, .fields-container__group, .ant-input, .ant-input-number-input
+    .fields-container__group, .ant-input, .ant-input-number-input
     {
         width: 315px;
     }
 
-    .fields-container__speciality, .fields-container__sex, .colors {
+    .fields-container__speciality, .fields-container__sex,
+    .colors, .fields-container__color {
         width: 335px;
-    }
-
-    select {
-        width: 357px;
     }
 
     .fields-container div[role='alert'] {
         height: 3px;
         font-size: 10px;
         margin: 0 0 20px 0;
+    }
+
+    .colors {
+        width: 295px;
+    }
+
+    .colors > * {
+        margin: 0;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .desktop {
+        display: none;
     }
 }
 

@@ -1,11 +1,11 @@
 .student-field {
     display: grid;
-    grid-template-columns: 9% 25% 25% 12% 10% 8% 8%;
-    font-size: 15px;
-    height: 50px;
-    margin: 0 10px 20px 0;
+    grid-template-columns: 61px auto 280px 96px 96px 96px 60px 30px;
+    grid-template-rows: 50px;
+    font-size: 16px;
+    height: 60px;
+    font-weight: 500;
     align-items: center;
-    font-weight: 400px;
 }
 
 .rating_label, .student-field_divider {
@@ -13,7 +13,9 @@
 }
 
 .items-container, .info {
-    padding: 36px;
+    grid-column-start: 1;
+    grid-column-end: 10;
+    padding: 20px 19px;
     background: #FFFFFF;
     box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
     border-radius: 6px;
@@ -24,27 +26,26 @@
 }
 
 .info {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 10;
     background: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .student-field__photo {
     grid-column-start: 1;
-    width: 50px;
-    height: 50px;
+    grid-column-end: 2;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: darkgray;
     font-size: 10px;
     overflow: hidden;
-    grid-row-start: 1;
-    grid-row-end: 4;
 }
 
 .student-field__photo img {
-    width: inherit;
-    height: inherit;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -53,8 +54,8 @@
     background-color: #FFFFFF;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     grid-column-start: 8;
     display: flex;
@@ -75,21 +76,31 @@
     .student-field {
         border-radius: 6px;
         display: grid;
-        padding: 0 0 0 10px;
+        padding: 0 0 0 20px;
         gap: 10px;
-        width: 325px;
+        width: 315px;
         grid-template-columns: 40px 12px 12px 50px 100px 30px;
-        grid-template-rows: 25px 25px 2px 13px 13px 13px;
-        font-size: 11px;
+        grid-template-rows: 10px 35px 2px 13px 13px 13px;
         height: 170px;
         margin: 0 10px 20px 0;
         align-items: center;
         box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
+        font-size: 13px;
+    }
+
+    .info {
+        width: 295px;
+    }
+
+    .fields_names > * {
+        font-size: 11px;
     }
 
     .fields_names__speciality, .fields_names__age, .fields_names__group {
         grid-column-start: 3;
         grid-column-end: 6;
+        font-weight: 100;
+
     }
 
     .fields_names__speciality {
@@ -105,14 +116,15 @@
         grid-column-start: 3;
     }
 
-    .fields_names__age::before, .fields_names__speciality::before, .fields_names__group::before {
+    .fields_names__age::before, .fields_names__speciality::before,
+    .fields_names__group::before {
         border-radius: 50%;
-        width: 6px;
-        height: 6px;
+        width: 5px;
+        height: 5px;
         background-color: #49C2E8;
         content: '';
         position: absolute;
-        left: 84px;
+        left: 94px;
     }
 
     .student-field .color {
@@ -125,8 +137,18 @@
 
     .student-field__photo {
         grid-column-start: 1;
-        width: 40px;
-        height: 40px;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        height: 35px;
+    }
+
+    .student-field__photo > img {
+        width: 30px;
+        height: 30px;
     }
 
     .rating_label {
@@ -147,9 +169,10 @@
     .fields_names__name {
         grid-column-start: 2;
         grid-column-end: 6;
-        grid-row-start: 1;
+        grid-row-start: 2;
         grid-row-end: 3;
         overflow: hidden;
+        margin-top: -20px;
     }
 
     .delete-button {
@@ -159,10 +182,11 @@
     }
 
     .items-container {
-        width:335px;
+        width: 335px;
         padding: 0;
         height: 100%;
         box-shadow: none;
+        margin: 0 ;
     }
 
     .student-field_divider {
@@ -179,20 +203,35 @@
     .fields_names {
         display: none;
     }
+
+    .fields_names__rating, .color, .rating_label {
+        margin-top: 15px;
+        font-size: 11px;
+        height: 11px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .fields_names__rating {
+        padding-top: 2px;
+    }
 }
 
-@media screen and (min-width: 605px){
+@media screen and (min-width: 690px) and (max-width: 1033px) {
     .student-field {
-        font-size: 13px;
+        grid-template-columns: 80px 180px 60px 30px;
+        font-size: 14px;
     }
 
-    .student-field__photo {
-        width: 30px;
-        height: 30px;
-    }
-
+    .fields_names__speciality, .fields_names__group,
+    .fields_names__age, .fields_names__rating,
     .rating_label {
         display: none;
+    }
+
+    .fields_names__name {
+        grid-column-end: 7;
     }
 }
 

@@ -83,6 +83,8 @@ body {
     font-weight: 500;
     display: flex;
     justify-content: start;
+    font-family: 'Geometria', sans-serif;
+    padding: 0;
 }
 
 
@@ -99,7 +101,7 @@ body {
     box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.1);
 }
 
-input {
+input, select {
     padding-left: 20px;
 }
 

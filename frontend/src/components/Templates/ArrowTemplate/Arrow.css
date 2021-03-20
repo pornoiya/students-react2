@@ -10,7 +10,7 @@
 .arrow__rectangle {
     transform: rotate(90deg);
     background: black;
-    height: 15px;
+    height: 16px;
     width: 2px;
     margin: 0 0 0 2px;
 }

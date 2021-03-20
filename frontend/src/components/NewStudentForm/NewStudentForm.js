@@ -50,7 +50,7 @@ export default function NewStudentForm () {
 
     return (
         <>
-            <h1>Новый студент</h1>
+            <h1 className={'page-primary-info__head-name'}>Новый студент</h1>
             <div>
                 <Form
                     layout="vertical"
@@ -62,7 +62,6 @@ export default function NewStudentForm () {
                     onValuesChange={(v) => v.speciality ? setSpeciality(v.speciality) : null}
                 >
                     <Form.Item
-                        label="Аватар"
                         name="photo_link"
                         initialValue={"mock"}
                         rules={[
@@ -117,52 +116,6 @@ export default function NewStudentForm () {
                     </Form.Item>
 
                     <Form.Item
-                        label="Рейтинг"
-                        name="rating"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Это поле обязательно",
-                            }
-                        ]}
-                    >
-                        <InputNumber placeholder="100"
-                                     min={1}
-                                     max={100}/>
-                    </Form.Item>
-
-                    <Form.Item
-                        label="Любимый цвет"
-                        name="fav_colour"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Это поле обязательно",
-                            }
-                        ]}
-                    >
-                        <div className={"colors"}>
-                            <input type={"radio"} name={"color"} value={"red"} id={"red_color"}/>
-                            <label htmlFor={"red_color"} className={"color red"}/>
-
-                            <input type={"radio"} name={"color"} value={"yellow"} id={"yellow_color"}/>
-                            <label htmlFor={"yellow_color"} className={"color yellow"}/>
-
-                            <input type={"radio"} name={"color"} value={"green"} id={"green_color"}/>
-                            <label htmlFor={"green_color"} className={"color green"}/>
-
-                            <input type={"radio"} name={"color"} value={"blue"} id={"blue_color"}/>
-                            <label htmlFor={"blue_color"} className={"color blue"}/>
-
-                            <input type={"radio"} name={"color"} value={"black"} id={"black_color"}/>
-                            <label htmlFor={"black_color"} className={"color black"}/>
-
-                            <input type={"radio"} name={"color"} value={"lgbt"} id={"lgbt_color"}/>
-                            <label htmlFor={"lgbt_color"} className={"color lgbt"}/>
-                        </div>
-                    </Form.Item>
-
-                    <Form.Item
                         label="Специальность"
                         name="speciality"
                         rules={[
@@ -190,10 +143,27 @@ export default function NewStudentForm () {
                         ]}
                     >
                         <select className={"fields-container__speciality"}>
+                            <option value="" hidden={true}>Выбрать</option>
                             {groups[pickedSpeciality] ?
                                 groups[pickedSpeciality].map(group => (<option value={group}>{group}</option>))
-                                : <option value="" hidden={true}>Выбрать</option>}
+                                : <option value="" hidden={true}>Выбрать</option>
+                            }
                         </select>
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Рейтинг"
+                        name="rating"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Это поле обязательно",
+                            }
+                        ]}
+                    >
+                        <InputNumber placeholder="100"
+                                     min={1}
+                                     max={100}/>
                     </Form.Item>
 
                     <Form.Item
@@ -211,6 +181,47 @@ export default function NewStudentForm () {
                             <option value="m">Мужской</option>
                             <option value="f">Женский</option>
                         </select>
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Любимый цвет"
+                        name="fav_colour"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Это поле обязательно",
+                            }
+                        ]}
+                    >
+                        <select className={"fields-container__color mobile"}>
+                            <option value="" hidden={true} selected>Выбрать</option>
+                            <option value="red">Красный</option>
+                            <option value="yellow">Жёлтый</option>
+                            <option value="green">Зелёный</option>
+                            <option value="blue">Синий</option>
+                            <option value="black">Чёрный</option>
+                            <option value="lgbt">ЛГБТ</option>
+                        </select>
+
+                        <div className={"colors desktop"}>
+                            <input type={"radio"} name={"color"} value={"red"} id={"red_color"}/>
+                            <label htmlFor={"red_color"} className={"color red"}/>
+
+                            <input type={"radio"} name={"color"} value={"yellow"} id={"yellow_color"}/>
+                            <label htmlFor={"yellow_color"} className={"color yellow"}/>
+
+                            <input type={"radio"} name={"color"} value={"green"} id={"green_color"}/>
+                            <label htmlFor={"green_color"} className={"color green"}/>
+
+                            <input type={"radio"} name={"color"} value={"blue"} id={"blue_color"}/>
+                            <label htmlFor={"blue_color"} className={"color blue"}/>
+
+                            <input type={"radio"} name={"color"} value={"black"} id={"black_color"}/>
+                            <label htmlFor={"black_color"} className={"color black"}/>
+
+                            <input type={"radio"} name={"color"} value={"lgbt"} id={"lgbt_color"}/>
+                            <label htmlFor={"lgbt_color"} className={"color lgbt"}/>
+                        </div>
                     </Form.Item>
 
                     </div>

@@ -6,7 +6,7 @@ function GoBackButton() {
     const history = useHistory();
 
     return (
-        <Button className={"app-button_transparent"}
+        <Button className={"app-button_transparent go_back"}
                 onClick={() => history.push('/')}>
             <Arrow/>
             назад к списку студентов
