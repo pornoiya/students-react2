@@ -12,6 +12,18 @@ const headers = {
     'Access-Control-Allow-Methods': 'POST, PUT, GET',
     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept' }
 
+//    Сортировка по цветам радуги привычнее для пользователя, чем
+//    сортировка лексикографически или по 16-ричному числу
+const rainbowOrder = {
+    "lgbt": 0,
+    "red": 1,
+    "orange": 2,
+    "yellow": 3,
+    "green": 4,
+    "blue": 5,
+    "black": 6
+}
+
 class StudentsList extends React.Component {
     constructor(props) {
         super(props);
@@ -23,14 +35,12 @@ class StudentsList extends React.Component {
         };
     }
 
-
     componentDidUpdate() {
         this.state.queryResult = ! this.state.students ? null :
             this.state.students.filter(student =>
             student.student.full_name.toLowerCase().includes(this.props.query.toLowerCase())
         );
     }
-
 
     componentDidMount() {
         fetch(BASE_URL, {
@@ -72,6 +82,14 @@ class StudentsList extends React.Component {
                 return studentB.full_name.localeCompare(studentA.full_name)
             else
                 return (studentB.full_name.localeCompare(studentA.full_name) * -1)
+        }
+        else if (this.props.criteria === 'fav_colour') {
+            if (! this.props.descending)
+                return rainbowOrder[studentA.fav_colour.trim()] <
+                rainbowOrder[studentB.fav_colour.trim()] ? -1: 1
+            else
+                return rainbowOrder[studentA.fav_colour.trim()] <
+                rainbowOrder[studentB.fav_colour.trim()] ? 1: -1;
         }
         else {
             if (! this.props.descending)

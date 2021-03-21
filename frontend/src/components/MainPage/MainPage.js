@@ -56,6 +56,7 @@ function MainPage() {
                         <option selected value="full_name">Имя</option>
                         <option value="rating">Рейтинг</option>
                         <option value="age">Возраст</option>
+                        <option value="fav_colour">Цвет</option>
                     </select>
 
                     <input type='checkbox' className={'search-block__sorting_by-ascending'} name={'descending'}
