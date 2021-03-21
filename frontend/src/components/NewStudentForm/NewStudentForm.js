@@ -264,7 +264,7 @@ export default function NewStudentForm () {
 
                     </div>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" className="app-button">
+                        <Button type="primary" htmlType="submit" className="app-button create">
                             Создать
                         </Button>
                     </Form.Item>

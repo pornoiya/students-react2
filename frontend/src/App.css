@@ -70,6 +70,10 @@ body {
     justify-content: center;
 }
 
+.create {
+    width: 380px;
+}
+
 .app-button_transparent {
     background-color: transparent;
     border: none;

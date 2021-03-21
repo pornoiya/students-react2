@@ -12,13 +12,13 @@ input[type='email'], input[type='number'],
     font-family: 'Geometria', sans-serif;
 }
 
-input[type='email'], input[type='number'],
+input[type='number'],
 .fields-container__speciality, .fields-container__sex,
-.colors, .fields-container__color, .fields-container__email {
+.colors, .fields-container__color {
     width: 380px;
 }
 
- input[type='text'],
+ input[type='text'], input[type='email'],
  .ant-input-number-input {
     width: 360px;
     padding: 0 0 0 20px;
