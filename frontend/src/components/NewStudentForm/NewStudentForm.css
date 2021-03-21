@@ -1,14 +1,29 @@
-input[type='text'], input[type='email'], input[type='number'], .ant-input-number-input,
-.fields-container__speciality, .fields-container__sex, .colors, .fields-container__color {
+input[type='email'], input[type='number'],
+.fields-container__speciality, .fields-container__sex,
+.colors, .fields-container__color,  input[type='text'],
+.ant-input-number-input,  input[type='text'],
+.ant-input-number-input, .fields-container__email {
     box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
     border-radius: 6px;
     border: none;
-    background-color: white;
+    background: white;
     height: 48px;
-    width: 380px;
-    -webkit-appearance:none;
+    -webkit-appearance: none;
     font-family: 'Geometria', sans-serif;
 }
+
+input[type='email'], input[type='number'],
+.fields-container__speciality, .fields-container__sex,
+.colors, .fields-container__color, .fields-container__email {
+    width: 380px;
+}
+
+ input[type='text'],
+ .ant-input-number-input {
+    width: 360px;
+    padding: 0 0 0 20px;
+}
+
 
 .ant-form-item-label {
     font-weight: 500;
@@ -47,18 +62,6 @@ input[type='text'], input[type='email'], input[type='number'], .ant-input-number
     margin-top: -15px;
 }
 
-.fields-container input, .fields-container select, .fields-container .colors {
-    margin: 10px 0;
-}
-
-input:hover, input:focus, select:hover, select:focus {
-    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.1);
-}
-
-.ant-input-number-handler-wrap {
-    display: none;
-}
-
 .colors {
     display: flex;
     width: 340px;
@@ -70,7 +73,6 @@ input:hover, input:focus, select:hover, select:focus {
 .color {
     width: 30px;
     height: 30px;
-    opacity: 0.7;
     border-radius: 50%;
 }
 
@@ -83,30 +85,42 @@ input:hover, input:focus, select:hover, select:focus {
 }
 
 .red {
-    background: red;
+    background: #E25B5B;
 }
 
 .yellow {
-    background: yellow;
+    background: #F7FB53;
 }
 
 .green {
-    background: green;
+    background: #83C872;
 }
 
 .blue {
-    background: blue;
+    background: #49C2E8;
 }
 
 .black {
-    background: black;
+    background: #000000;
+}
+
+.orange {
+    background: #EFA638;
 }
 
 .lgbt {
     background: linear-gradient(180deg, #FE0000 16.66%, #FD8C00 16.66%, #FFE500 33.32%, #119F0B 49.98%, #0644B3 83.3%, #C22EDC 83.3%);
 }
 
-.mobile {
+.fields-container input, .fields-container select, .fields-container .colors {
+    margin: 10px 0;
+}
+
+input:hover, input:focus, select:hover, select:focus {
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ant-input-number-handler-wrap {
     display: none;
 }
 
@@ -143,14 +157,6 @@ input:hover, input:focus, select:hover, select:focus {
 
     .colors > * {
         margin: 0;
-    }
-
-    .mobile {
-        display: block;
-    }
-
-    .desktop {
-        display: none;
     }
 }
 
