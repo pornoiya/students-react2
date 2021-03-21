@@ -1,5 +1,5 @@
 import { Upload, Modal } from 'antd';
-import React from "react";
+import React from 'react';
 import './Avatar.css'
 
 function getBase64(file) {
@@ -38,7 +38,12 @@ class AvatarUploaderTemplate extends React.Component {
         const uploadButton = (
             <>
                 <div className={'upload-field__button'}/>
-                <div className={'upload-field__title'}>Сменить аватар</div>
+                <div>
+                    <div className={'upload-field__title'}>
+                        Сменить аватар
+                    </div>
+                    <p className={'avatar-size'}>500x500</p>
+                </div>
             </>);
         return (
             <>
