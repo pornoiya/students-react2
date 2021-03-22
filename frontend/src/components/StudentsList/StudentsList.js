@@ -12,7 +12,7 @@ const headers = {
     'Access-Control-Allow-Methods': 'POST, PUT, GET',
     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept' }
 
-//    Сортировка по цветам радуги привычнее для пользователя, чем
+//    Сортировка по цветам радуги привычнее и понятнее для пользователя, чем
 //    сортировка лексикографически или по 16-ричному числу
 const rainbowOrder = {
     "lgbt": 0,

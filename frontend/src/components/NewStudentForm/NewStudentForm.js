@@ -117,7 +117,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label={"E-mail"}
-                            name={"e-mail"}
+                            name={"email"}
                             rules={[
                                 () => ({
                                     validator(_, value) {
@@ -127,7 +127,7 @@ export default function NewStudentForm () {
                                         }
                                         return Promise.reject("Введите валидный e-mail: mymail@example.com");
                                     },
-                                }),
+                                })
                             ]}
                         >
                             <Input type={'email'} className={'fields_container__email'}
@@ -141,10 +141,18 @@ export default function NewStudentForm () {
                                 {
                                     required: true,
                                     message: "И это поле обязательно",
-                                }
+                                },
+                                () => ({
+                                    validator(_, value) {
+                                        if (!value || 18 <= value && value <= 100) {
+                                            return Promise.resolve();
+                                        }
+                                        return Promise.reject("Введите возраст от 18 до 100 лет");
+                                    },
+                                }),
                             ]}
                         >
-                            <InputNumber placeholder="18" min={18} max={100}/>
+                            <InputNumber placeholder="18"/>
                         </Form.Item>
 
                         <Form.Item
