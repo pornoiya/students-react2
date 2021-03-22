@@ -33,8 +33,8 @@ def handle_student_request():
 
     def post():
         try:
-            prop_check = ["id", "full_name", "rating", "age", "photo_link", "speciality", "group", "sex",
-                          "fav_colour"]
+            prop_check = ["id", "full_name", "rating", "age", "photo_link",
+                          "speciality", "group", "sex", "fav_colour", "email"]
             blob = request.get_json(force=True)
             for prop in prop_check:
                 if prop not in blob:
