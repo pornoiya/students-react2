@@ -3,6 +3,7 @@ import './MainPage.css'
 import { useHistory } from 'react-router-dom';
 import StudentsList from "../StudentsList/StudentsList";
 import {useState} from "react";
+import {BASE_URL, headers} from "../../config";
 
 function MainPage() {
     const [sortInfo, setSorting] = useState({
@@ -11,6 +12,45 @@ function MainPage() {
     });
 
     const [query, setQuery] = useState('');
+    const [studentsDefault, setStudentsDefault] = useState([]);
+    const [studentsList, setStudentsList] = useState([]);
+
+    const [isLoaded, setIsLoaded] = useState({
+        isLoaded: false,
+        error: null
+    });
+
+    const fetchData = async () => {
+        return await fetch(BASE_URL, {
+            method: "GET",
+            headers: headers } )
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    const students = ! result.students ? null
+                        : result.students
+                    setStudentsDefault(students)
+                    setStudentsList(students)
+                    setIsLoaded({
+                        isLoaded: true,
+                    });
+                },
+                (error) => {
+                    setIsLoaded({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
+    }
+
+    const updateInput = async (query) => {
+        const filtered = studentsDefault.filter(data => {
+            return data.student.full_name.toLowerCase().includes(query.toLowerCase())
+        })
+        setQuery(query);
+        setStudentsList(filtered);
+    }
 
     const sortingHandler = (e) => {
         const key = e.target.name
@@ -22,11 +62,9 @@ function MainPage() {
         }
     }
 
-    const queryHandler = (e) => {
-        setQuery(e.target.value)
-    }
 
     const history = useHistory();
+    React.useEffect( () => { fetchData() },[]);
 
     return (
         <main>
@@ -45,7 +83,8 @@ function MainPage() {
                 <input type='search' className='search-bar'
                        placeholder='Поиск по имени'
                        value={query}
-                       onChange={(event) => queryHandler(event)} />
+                       onChange={(event) => updateInput(event.target.value)}
+                />
                 <div className='search-block__sorting'>
                     <select id={'sort-criteria-field'}
                             name={'criteria'}
@@ -73,7 +112,10 @@ function MainPage() {
                 <span className={'fields_names__age'}>Возраст</span>
                 <span className={'fields_names__rating'}>Рейтинг</span>
             </div>
-            <StudentsList descending={sortInfo.descending} criteria={sortInfo.criteria} query={query}/>
+            <StudentsList descending={sortInfo.descending}
+                          criteria={sortInfo.criteria}
+                          isLoaded={isLoaded}
+                          students={studentsList ? studentsList : studentsDefault}/>
         </main>
     )
 }

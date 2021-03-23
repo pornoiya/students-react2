@@ -3,21 +3,14 @@ import React from "react";
 import {Form, Input, Button, InputNumber } from "antd"
 import {useHistory} from "react-router-dom";
 import AvatarUploaderTemplate from "../Templates/AvatarUploaderTemplate/AvatarUploaderTemplate";
+import {BASE_URL, headers} from "../../config";
+
 
 // 1. Формы. Есть библиотеки, которые облегчают работу с формами: хранение значений,
 // обработка данных при отправке формы и т.п. Самая популярная из них -- формик.
 // Я выбрала antd forms, потому что в документации был удобный и простой пример
 // загрузки файла с его отображением, а еще мне было интересно узнать об альтернативах
 // формику, потому что монополия это плохо. Пока есть выбор, продукты будут раззвиваться.
-
-const BASE_URL = "http://213.189.218.32:8080/students/api/v1.0/students_list/"
-const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, PUT, GET, HEAD",
-    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Accept",
-    "Content-Type": "application/json",
-    "Accept":"application/json"
-}
 
 export default function NewStudentForm () {
 
@@ -119,6 +112,10 @@ export default function NewStudentForm () {
                             label={"E-mail"}
                             name={"email"}
                             rules={[
+                                {
+                                    required: true,
+                                    message: "Это поле тоже обязательно"
+                                },
                                 () => ({
                                     validator(_, value) {
                                         if (!value || value

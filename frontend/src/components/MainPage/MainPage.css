@@ -108,7 +108,7 @@ main {
 }
 
 .search-block__sorting {
-    width: 196px;
+    width: 220px;
 }
 
 .search-block__sorting_by-category, .search-block__sorting_by-ascending {
@@ -213,7 +213,6 @@ main {
 
 @media screen and (min-width: 690px) and (max-width: 1033px) {
     .fields_names {
-        /*grid-template-columns: 61px auto 96px 66px 60px 30px;*/
         grid-template-columns: 99px 70px 96px 66px 66px 60px 30px;
     }
 }
