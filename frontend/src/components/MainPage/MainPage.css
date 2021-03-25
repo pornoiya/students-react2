@@ -5,6 +5,7 @@
 }
 
 .fields_names {
+    align-items: end;
     height: 34px;
     margin: 20px 0 5px;
     grid-row-start: 1;
@@ -166,6 +167,7 @@ main {
     }
 
     .search-block {
+        margin: -3px 0 ;
         width: 335px;
     }
 

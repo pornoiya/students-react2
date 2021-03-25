@@ -1,4 +1,4 @@
-import { Upload, Modal } from 'antd';
+import {Upload, message} from 'antd';
 import React from 'react';
 import './Avatar.css'
 
@@ -18,6 +18,18 @@ class AvatarUploaderTemplate extends React.Component {
         previewTitle: '',
         file: ''
     };
+
+    beforeUpload(file) {
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            message.error('Выберете JPG/PNG аватар!');
+        }
+        const isLt2M = file.size / 1024 / 1024 <= 1;
+        if (!isLt2M) {
+            message.error('Image must smaller than 1MB!');
+        }
+        return isJpgOrPng && isLt2M;
+    }
 
     handlePreview = async file => {
         if (!file.url && !file.preview) {

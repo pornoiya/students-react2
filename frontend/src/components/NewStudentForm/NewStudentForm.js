@@ -3,14 +3,18 @@ import React from "react";
 import {Form, Input, Button, InputNumber } from "antd"
 import {useHistory} from "react-router-dom";
 import AvatarUploaderTemplate from "../Templates/AvatarUploaderTemplate/AvatarUploaderTemplate";
-import {BASE_URL, headers} from "../../config";
+import {BASE_URL, headers, upload} from "../../config";
 
 
-// 1. Формы. Есть библиотеки, которые облегчают работу с формами: хранение значений,
-// обработка данных при отправке формы и т.п. Самая популярная из них -- формик.
-// Я выбрала antd forms, потому что в документации был удобный и простой пример
-// загрузки файла с его отображением, а еще мне было интересно узнать об альтернативах
-// формику, потому что монополия это плохо. Пока есть выбор, продукты будут раззвиваться.
+//  Формы. Есть библиотеки, которые облегчают работу с формами: хранение значений,
+//  обработка данных при отправке формы и т.п. Самая популярная из них -- формик.
+//  Я выбрала antd forms, потому что в документации был удобный и простой пример
+//  загрузки файла с его отображением, а еще мне было интересно узнать об альтернативах
+//  формику, потому что монополия это плохо. Пока есть выбор, продукты будут раззвиваться.
+
+//  Axios vs fetch api. Библиотека -- лишняя нагрузка на сервер, хотя axios требует
+//  меньше кода, ее методы интуитивнее и она нормально обрабатывает ошибки с сервера
+
 
 export default function NewStudentForm () {
 
@@ -27,10 +31,13 @@ export default function NewStudentForm () {
 
     const [pickedSpeciality, setSpeciality] = React.useState("");
 
+    const [avatar, setAvatar] = React.useState("pizdapizdi")
+
     const [width, setWidth]   = React.useState(window.innerWidth);
     const updateDimensions = () => {
         setWidth(window.innerWidth);
     }
+
     React.useEffect(() => {
         window.addEventListener("resize", updateDimensions);
         return () => window.removeEventListener("resize", updateDimensions);
@@ -54,6 +61,31 @@ export default function NewStudentForm () {
             })
     };
 
+    const getBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+
+    const onPhotoChangeHandler = (event) => {
+        getBase64(event.target.files[0]).then(res => {
+            fetch(BASE_URL + upload, {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify({id: res.slice(123, 130), avatar: res})
+            } )
+                .then(resp => resp.json())
+                .then(resp => {
+                    if (resp.code !== 200) {
+                        error.message({ code: resp.code, message: resp.message })
+                    }
+                })
+        })
+
+            .catch(err => alert(err))
+    }
+
     return (
         <>
             <h1 className={'page-primary-info__head-name'}>Новый студент</h1>
@@ -69,7 +101,7 @@ export default function NewStudentForm () {
                 >
                     <Form.Item
                         name="photo_link"
-                        initialValue={"mock"}
+                        // initialValue={"mock"}
                         rules={[
                             {
                                 required: true,
@@ -77,7 +109,10 @@ export default function NewStudentForm () {
                             }
                         ]}
                     >
-                        <AvatarUploaderTemplate/>
+                        <input type="file" name="file" onChange={(e) => onPhotoChangeHandler(e)} accept={'image/jpeg'}
+                        // value={avatar ? avatar.splice(7) : ""}
+                        />
+                        {/*<AvatarUploaderTemplate/>*/}
                     </Form.Item>
 
                     <Form.Item name={"id"} initialValue={0} />
@@ -102,7 +137,7 @@ export default function NewStudentForm () {
                                         }
                                         return Promise.reject("Введите фамилию, имя, отчество кириллицей");
                                     },
-                                }),
+                                })
                             ]}
                         >
                             <Input placeholder="Иванов Иван Иванович" />

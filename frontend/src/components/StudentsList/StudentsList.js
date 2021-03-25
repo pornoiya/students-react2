@@ -10,6 +10,7 @@ import {BASE_URL, headers} from "../../config";
 
 //    Сортировка по цветам радуги привычнее и понятнее для пользователя, чем
 //    сортировка лексикографически или по 16-ричному числу
+
 const rainbowOrder = {
     "lgbt": 0,
     "red": 1,
@@ -21,6 +22,7 @@ const rainbowOrder = {
 }
 
 function StudentsList(props) {
+
     const deleteRequest = (id) => {
         fetch(BASE_URL + id, {
             method: "DELETE",
@@ -83,7 +85,10 @@ function StudentsList(props) {
                             className={'student-field'}
                         >
                             <span className={'student-field__photo'}>
-                                <img src={st.photo_link} alt={'User picture'}/></span>
+                                {/*{alert(props.avatars)}*/}
+                                {/*{props.avatars.filter(a => a.avatar === 'AAABAAE')[0].avatar}*/}
+                                <img src={props.avatars.filter(a => a.avatar === 'AAABAAE')[0].avatar}
+                                     alt={'User picture'}/></span>
                             <span className={'fields_names__name'}>{st.full_name}</span>
                             <span className={'fields_names__speciality'}>{st.speciality}</span>
                             <span className={'fields_names__group'}>{st.group}</span>

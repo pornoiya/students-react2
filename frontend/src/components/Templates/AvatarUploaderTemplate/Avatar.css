@@ -92,6 +92,6 @@
 }
 
 /*заглушка ошибки от при загрузке аватара*/
-.ant-tooltip-inner {
-    display: none;
-}
+/*.ant-tooltip-inner {*/
+/*    display: none;*/
+/*}*/
