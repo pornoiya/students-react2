@@ -2,7 +2,6 @@ import "./NewStudentForm.css"
 import React from "react";
 import {Form, Input, Button, InputNumber } from "antd"
 import {useHistory} from "react-router-dom";
-import AvatarUploaderTemplate from "../Templates/AvatarUploaderTemplate/AvatarUploaderTemplate";
 import {BASE_URL, headers, upload} from "../../config";
 
 
@@ -10,7 +9,9 @@ import {BASE_URL, headers, upload} from "../../config";
 //  обработка данных при отправке формы и т.п. Самая популярная из них -- формик.
 //  Я выбрала antd forms, потому что в документации был удобный и простой пример
 //  загрузки файла с его отображением, а еще мне было интересно узнать об альтернативах
-//  формику, потому что монополия это плохо. Пока есть выбор, продукты будут раззвиваться.
+//  формику, потому что монополия это плохо. Пока есть выбор, продукты будут развиваться.
+
+//  upd: при правках я вообще отказалась от ant uploader и создала новые элементы
 
 //  Axios vs fetch api. Библиотека -- лишняя нагрузка на сервер, хотя axios требует
 //  меньше кода, ее методы интуитивнее и она нормально обрабатывает ошибки с сервера
@@ -31,7 +32,11 @@ export default function NewStudentForm () {
 
     const [pickedSpeciality, setSpeciality] = React.useState("");
 
-    const [avatar, setAvatar] = React.useState("pizdapizdi")
+    const [avatarState, setAvatarState] = React.useState({
+        name: "",
+        isLoaded: false,
+        base64: ""
+    });
 
     const [width, setWidth]   = React.useState(window.innerWidth);
     const updateDimensions = () => {
@@ -59,6 +64,19 @@ export default function NewStudentForm () {
                 }
                 history.push(responsePath, { code: resp.code, message: resp.message })
             })
+
+            fetch(BASE_URL + upload, {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify({id: avatarState.name, avatar: avatarState.base64})
+            } )
+                .then(resp => resp.json())
+                .then(resp => {
+                    if (resp.code !== 200) {
+                        error.message({ code: resp.code, message: resp.message })
+                    }
+                })
+            .catch(err => error.message({ code: resp.code, message: resp.message }))
     };
 
     const getBase64 = file => new Promise((resolve, reject) => {
@@ -70,26 +88,15 @@ export default function NewStudentForm () {
 
     const onPhotoChangeHandler = (event) => {
         getBase64(event.target.files[0]).then(res => {
-            fetch(BASE_URL + upload, {
-                method: "POST",
-                headers: headers,
-                body: JSON.stringify({id: res.slice(123, 130), avatar: res})
-            } )
-                .then(resp => resp.json())
-                .then(resp => {
-                    if (resp.code !== 200) {
-                        error.message({ code: resp.code, message: resp.message })
-                    }
-                })
+            setAvatarState({isLoaded: true, base64: res, name: event.target.files[0].name})
         })
-
             .catch(err => alert(err))
     }
 
     return (
         <>
             <h1 className={'page-primary-info__head-name'}>Новый студент</h1>
-            <div>
+            <div className={'form'}>
                 <Form
                     layout="vertical"
                     className={"student-form"}
@@ -101,7 +108,6 @@ export default function NewStudentForm () {
                 >
                     <Form.Item
                         name="photo_link"
-                        // initialValue={"mock"}
                         rules={[
                             {
                                 required: true,
@@ -109,10 +115,29 @@ export default function NewStudentForm () {
                             }
                         ]}
                     >
-                        <input type="file" name="file" onChange={(e) => onPhotoChangeHandler(e)} accept={'image/jpeg'}
-                        // value={avatar ? avatar.splice(7) : ""}
-                        />
-                        {/*<AvatarUploaderTemplate/>*/}
+                        {! avatarState.isLoaded ?
+                             <label className={'custom-upload'}>
+                                 <input type="file" name="file"
+                                        className={'avatar-uploader-original-file'}
+                                        onChange={(e) =>
+                                            onPhotoChangeHandler(e)}
+                                        accept={'image/jpeg, image/png'}/>
+                                 <div className={'avatar-area'} >ФИ</div>
+                                 <div className={'upload'}>
+                                     <p className={'upload-title'}>Загрузить аватар</p>
+                                     <p className={'upload-avatar-size'}>500х500</p>
+                                 </div>
+                             </label>
+                            :
+                            <div className={'custom-upload'}>
+                                <img className={'avatar-area'} src={avatarState.base64} alt={'user avatar'} />
+                                <div className={'upload'}>
+                                    <p className={'upload-title'}>Аватар загружен</p>
+                                    <p className={'upload-avatar-size'}>500х500</p>
+                                </div>
+                            </div>
+                        }
+
                     </Form.Item>
 
                     <Form.Item name={"id"} initialValue={0} />

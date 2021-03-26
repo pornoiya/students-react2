@@ -75,6 +75,8 @@ function StudentsList(props) {
         </div>;
     }
     else {
+        let avatars = ! props.avatars.length ? []
+            : props.avatars
         return (
             <ul className={'items-container'}>
                 {  students
@@ -85,9 +87,8 @@ function StudentsList(props) {
                             className={'student-field'}
                         >
                             <span className={'student-field__photo'}>
-                                {/*{alert(props.avatars)}*/}
-                                {/*{props.avatars.filter(a => a.avatar === 'AAABAAE')[0].avatar}*/}
-                                <img src={props.avatars.filter(a => a.avatar === 'AAABAAE')[0].avatar}
+                                <img src={ ! avatars.length ? ""
+                                    : avatars.filter(a => a.avatar.id === st.photo_link.slice(12,))[0].avatar.avatar}
                                      alt={'User picture'}/></span>
                             <span className={'fields_names__name'}>{st.full_name}</span>
                             <span className={'fields_names__speciality'}>{st.speciality}</span>

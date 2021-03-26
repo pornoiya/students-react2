@@ -1,3 +1,7 @@
+.form {
+    margin-top: -10px;
+}
+
 input[type='email'], input[type='number'],
 .fields-container__speciality, .fields-container__sex,
 .colors, .fields-container__color,  input[type='text'],
@@ -24,7 +28,6 @@ input[type='number'],
     padding: 0 0 0 20px;
 }
 
-
 .ant-form-item-label {
     font-weight: 500;
 }
@@ -45,13 +48,17 @@ input[type='number'],
 }
 
 .fields-container {
-    height: 460px;
+    height: 490px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
-.fields-container div[role='alert'] {
+.fields-container > * {
+    margin-bottom: 8px;
+}
+
+form div[role='alert'] {
     height: 3px;
     font-size: 12px;
     color: red;
@@ -163,4 +170,63 @@ input:hover, input:focus, select:hover, select:focus {
 .ant-upload-list-item-name {
     width: 60px;
     text-overflow: ellipsis;
+}
+
+.upload-title {
+    font-size: 15px;
+    text-decoration: underline;
+    font-family: 'Geometria', 'Roboto', sans-serif;
+}
+
+.upload-avatar-size {
+    margin-top: -5px;
+    font-size: 12px;
+}
+
+.upload-avatar-size, .upload-title {
+    font-weight: 500;
+}
+
+.upload-title:hover {
+    color: #49C2E8;
+}
+
+.upload-field__title {
+    text-decoration: none;
+    color: #199DE8;
+}
+
+.ant-form-item-required {
+    font-size: 15px;
+}
+
+.avatar-area {
+    font-family: 'SF Pro Display', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    border-radius: 50%;
+    background: white;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    margin-right: 20px;
+    font-size: 28px;
+    color: #49C2E8;
+    font-weight: 600;
+}
+
+.avatar-area:hover {
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.15);
+}
+
+.avatar-uploader-original-file {
+    display: none;
+}
+
+.custom-upload {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px ;
 }
