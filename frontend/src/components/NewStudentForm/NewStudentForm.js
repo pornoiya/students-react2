@@ -169,7 +169,7 @@ export default function NewStudentForm () {
                         </Form.Item>
 
                         <Form.Item
-                            label={"E-mail"}
+                            label={"Email"}
                             name={"email"}
                             rules={[
                                 {
